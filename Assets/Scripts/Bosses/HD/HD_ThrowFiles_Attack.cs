@@ -24,32 +24,12 @@ public class HD_ThrowFiles_Attack : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = _FilesSprites[Random.Range(0, _FilesSprites.Length)];
     }
 
-    //public IEnumerator Travel2Player()
-    //{
-    //    bool travelling = true;
-    //    while (travelling)
-    //    {
-    //        transform.position += Vector3.Lerp(transform.position, _target, _travelSpeed * Time.deltaTime);
-    //        transform.Rotate(new Vector3(0, 5, 0));
-
-    //        if (transform.position == _target ||
-    //            _collided)
-    //        {
-    //            Destroy(this.gameObject);
-    //            break;
-    //        }
-    //        else
-    //            yield return null;
-    //    }
-    //}
-
     void FixedUpdate()
     {
         if (currentTimeToDestroy <= 0 || _collided)
             Destroy(gameObject);
         else 
         {
-            //transform.Translate((_target - transform.position) * _travelSpeed * Time.deltaTime);
             transform.position = Vector3.Lerp(transform.position, _target, _travelSpeed * Time.deltaTime);
             currentTimeToDestroy -= Time.deltaTime;
         }
@@ -57,6 +37,7 @@ public class HD_ThrowFiles_Attack : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        _collided = true;
+        if (collision.collider.tag == "Player")
+            _collided = true;
     }
 }

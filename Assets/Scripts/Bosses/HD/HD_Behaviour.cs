@@ -16,7 +16,7 @@ public class HD_Behaviour : MonoBehaviour
     HD_ThrowFiles_Attack _throwFiles_Attack;
     
     [HideInInspector]
-    public bool posLocked = false;
+    public bool rotationLocked = false;
 
     void Start()
     {
@@ -36,8 +36,11 @@ public class HD_Behaviour : MonoBehaviour
                 default:
                     break;
                 case 0:
-                    DashAttack();
-                    _currentTimeToAttack = _timeToAttack;
+                    if (!rotationLocked)
+                    {
+                        DashAttack();
+                        _currentTimeToAttack = _timeToAttack;
+                    }
                     break;
                 case 1:
                     ThrowFilesAttack();
@@ -53,7 +56,7 @@ public class HD_Behaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!posLocked)
+        if (!rotationLocked)
         {
             // gira o hd em direção ao jogador de forma suave
             var targetRotation = Quaternion.LookRotation(_player.transform.position - transform.position);
