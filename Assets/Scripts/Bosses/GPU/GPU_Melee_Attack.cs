@@ -91,6 +91,8 @@ public class GPU_Melee_Attack : MonoBehaviour {
                         yield return null;
                 }
 
+				// TODO: runs attack animation and take damage to player
+
                 break;
             } else
                 yield return null;
