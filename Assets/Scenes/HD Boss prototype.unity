@@ -174,7 +174,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995672082}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 10.7, z: -10.7}
+  m_LocalPosition: {x: 0, y: 15, z: -18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -252,7 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc5a1244e49953429e087ef0545fc3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeedLookAt: 10
+  _timeToAttack: 2
+  _rotationSpeedLookAt: 5
+  _throwFilesGO: {fileID: 1484695756215325680, guid: 418eaa1a870bd374198a1db13089be20, type: 3}
   posLocked: 0
 --- !u!65 &1415933910
 BoxCollider:
@@ -436,6 +438,7 @@ GameObject:
   - component: {fileID: 2082736973}
   - component: {fileID: 2082736972}
   - component: {fileID: 2082736971}
+  - component: {fileID: 2082736976}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -532,3 +535,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2082736976
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082736970}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

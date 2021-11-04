@@ -4,28 +4,50 @@ using UnityEngine;
 
 public class HD_Behaviour : MonoBehaviour
 {
-    public float rotationSpeedLookAt;
+    [SerializeField]
+    float _timeToAttack = 2f, _rotationSpeedLookAt;
+    float _currentTimeToAttack;
 
-    GameObject player;
-    HD_Dash_Attack dash_Attack;
+    [SerializeField]
+    GameObject _throwFilesGO;
+
+    GameObject _player;
+    HD_Dash_Attack _dash_Attack;
+    HD_ThrowFiles_Attack _throwFiles_Attack;
     
     [HideInInspector]
     public bool posLocked = false;
 
     void Start()
     {
-        dash_Attack = GetComponent<HD_Dash_Attack>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        _dash_Attack = GetComponent<HD_Dash_Attack>();
+        _throwFiles_Attack = GetComponent<HD_ThrowFiles_Attack>();
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
 
     void Update()
     {
-        // enquanto n tem algo inteligente q manda executar o dash, faz manualmente, fodas
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (_currentTimeToAttack <= 0)
         {
-            StartCoroutine(dash_Attack.SpinIntoPlayer());
+            int attack = Random.Range(0, 2);
+            switch (attack)
+            {
+                default:
+                    break;
+                case 0:
+                    DashAttack();
+                    _currentTimeToAttack = _timeToAttack;
+                    break;
+                case 1:
+                    ThrowFilesAttack();
+                    _currentTimeToAttack = _timeToAttack;
+                    break;
+            }
+            _currentTimeToAttack = _timeToAttack;
         }
+        else
+            _currentTimeToAttack -= Time.deltaTime;
     }
 
 
@@ -34,8 +56,18 @@ public class HD_Behaviour : MonoBehaviour
         if (!posLocked)
         {
             // gira o hd em direção ao jogador de forma suave
-            var targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeedLookAt * Time.deltaTime);
+            var targetRotation = Quaternion.LookRotation(_player.transform.position - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeedLookAt * Time.deltaTime);
         }
+    }
+
+    void DashAttack()
+    {
+        StartCoroutine(_dash_Attack.SpinIntoPlayer());
+    }
+
+    void ThrowFilesAttack()
+    {
+        Instantiate(_throwFilesGO, transform.position, Quaternion.Euler(new Vector3(45,0,0)));
     }
 }

@@ -15,16 +15,6 @@ public class HD_Dash_Attack : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // enquanto n tem algo inteligente q manda executar o dash, faz manualmente, fodas
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpinIntoPlayer();
-        }
-    }
-
     public IEnumerator SpinIntoPlayer()
     {
         bool dashing = true;
@@ -36,7 +26,7 @@ public class HD_Dash_Attack : MonoBehaviour
 
         // pega a posição do player quando é acionado o ataque (sem atualizar mais, pra que ele vá na direção q o jogador estava e nao a atual)
         Vector3 targetV3 = player.transform.position;
-        // um vector2 pra poder comparar as posições sem se preocupar com Y. aproveito pra arredondar pq se n da uns comportamentos estranhos de coisa infinita. (interessante testar dnv)
+        // um vector2 pra poder comparar as posições sem se preocupar com Y. aproveito pra arredondar pq se n da uns comportamentos estranhos de lerp infinito. (interessante testar dnv)
         Vector2 targetV2 = new Vector2(Mathf.Round(targetV3.x), Mathf.Round(targetV3.z));
 
         // enquanto não tiver chego no target OU não ter encostado no jogador, anda na direção do target
@@ -44,6 +34,7 @@ public class HD_Dash_Attack : MonoBehaviour
         {
             // lerp padrao
             transform.position = Vector3.Lerp(transform.position, targetV3, spinSpeed * Time.deltaTime);
+            transform.Rotate(new Vector3(0, 10, 0));
 
             // vector2 com a posição arredondada do HD
             Vector2 currentPos = new Vector2(Mathf.Round(transform.position.x), Mathf.Round(transform.position.z));
