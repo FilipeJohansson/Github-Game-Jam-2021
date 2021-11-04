@@ -83,4 +83,4 @@ crashlytics-build.properties
 
 
 *.aseprite.meta
-./aseprite/*.png.meta
+Assets/Aseprite/*.png.meta
