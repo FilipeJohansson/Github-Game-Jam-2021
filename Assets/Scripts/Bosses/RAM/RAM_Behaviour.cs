@@ -8,7 +8,7 @@ public class RAM_Behaviour : MonoBehaviour {
 
     // to binary attach
     [SerializeField]
-	float timeToAttack = 1f;
+	float timeToAttack = 3f;
 	float currentTimeToAttack;
 
 	[SerializeField]
@@ -61,11 +61,10 @@ public class RAM_Behaviour : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate() {
-
-
         var targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeedLookAt * Time.deltaTime);
-
-		
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeedLookAt * Time.deltaTime);		
 	}
+
+
+
 }
