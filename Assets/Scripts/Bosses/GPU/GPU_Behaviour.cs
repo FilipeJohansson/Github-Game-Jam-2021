@@ -10,15 +10,32 @@ public class GPU_Behaviour : MonoBehaviour {
 	[SerializeField]
 	GameObject distanceAttack;
 
-	GameObject player;
+	[HideInInspector]
+	public GameObject player;
+
+	[HideInInspector]
+	public bool posLocked = false;
+
+	[SerializeField]
+	float rotationSpeedLookAt = 1f;
+
+	GPU_Melee_Attack melee_Attack;
 
 	// Start is called before the first frame update
 	void Awake() {
 		// Find player object
 		player = GameObject.FindGameObjectWithTag("Player");
 
+		melee_Attack = GetComponent<GPU_Melee_Attack>();
+
 		// Start currentTimeToAttack
 		currentTimeToAttack = timeToAttack;
+	}
+
+	void Update() {
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			StartCoroutine(melee_Attack.DashIntoPlayer());
+		}
 	}
 
 	// Update is called once per frame
@@ -34,7 +51,10 @@ public class GPU_Behaviour : MonoBehaviour {
 			currentTimeToAttack = timeToAttack;
 		} else
 			currentTimeToAttack -= Time.deltaTime;
+
+		if (!posLocked) {
+			var targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
+			transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeedLookAt * Time.deltaTime);
+		}
 	}
-
-
 }
