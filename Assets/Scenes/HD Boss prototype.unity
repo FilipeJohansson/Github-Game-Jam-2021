@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 1415933908}
   m_Layer: 0
   m_Name: HD Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,6 +256,7 @@ MonoBehaviour:
   _timeToAttack: 2.5
   _rotationSpeedLookAt: 10
   _throwFilesGO: {fileID: 1484695756215325680, guid: 418eaa1a870bd374198a1db13089be20, type: 3}
+  _discGO: {fileID: 5852110038477009606, guid: a8d20e8a7a2f0e943b38ac5710746a6c, type: 3}
   rotationLocked: 0
 --- !u!65 &1415933910
 BoxCollider:
