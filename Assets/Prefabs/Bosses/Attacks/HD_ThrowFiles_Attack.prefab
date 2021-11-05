@@ -101,8 +101,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b897bbc7c4841ec40b1448dd9e0685eb, type: 3}
   - {fileID: 21300000, guid: fa899e8f1a4d0b543919b0e23170dd8a, type: 3}
   - {fileID: 21300000, guid: c489260d6ac4b6541b5b8202349a0354, type: 3}
+  - {fileID: 21300000, guid: f9e7c150f8e126540aa2fb23d86c6389, type: 3}
   _travelSpeed: 8
-  timeToDestroy: 0.5
+  _timeToDestroy: 0.5
 --- !u!65 &4339487057524567183
 BoxCollider:
   m_ObjectHideFlags: 0
