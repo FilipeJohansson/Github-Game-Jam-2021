@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1484695756215325680
+--- !u!1 &5852110038477009606
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5082851436988423512}
-  - component: {fileID: 7677396147351238828}
-  - component: {fileID: 1945839774061142354}
-  - component: {fileID: 4339487057524567183}
-  - component: {fileID: 874697018095408696}
+  - component: {fileID: 5852110038477009659}
+  - component: {fileID: 5852110038477009604}
+  - component: {fileID: 5852110038477009605}
+  - component: {fileID: 2006547092346973268}
+  - component: {fileID: 5656294436110882691}
   m_Layer: 0
-  m_Name: HD_ThrowFiles_Attack
+  m_Name: HD_Disc_Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5082851436988423512
+--- !u!4 &5852110038477009659
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484695756215325680}
+  m_GameObject: {fileID: 5852110038477009606}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,13 +34,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
---- !u!212 &7677396147351238828
+--- !u!212 &5852110038477009604
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484695756215325680}
+  m_GameObject: {fileID: 5852110038477009606}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fa899e8f1a4d0b543919b0e23170dd8a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ba2e8d262b92ca4d89de7818e5972a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,45 +85,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1945839774061142354
+--- !u!114 &5852110038477009605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484695756215325680}
+  m_GameObject: {fileID: 5852110038477009606}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1079d096ab5795248a682fb5e4773886, type: 3}
+  m_Script: {fileID: 11500000, guid: fc87e39c7f00b67409c7a0d5d8ded843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _FilesSprites:
-  - {fileID: 21300000, guid: b897bbc7c4841ec40b1448dd9e0685eb, type: 3}
-  - {fileID: 21300000, guid: fa899e8f1a4d0b543919b0e23170dd8a, type: 3}
-  - {fileID: 21300000, guid: c489260d6ac4b6541b5b8202349a0354, type: 3}
-  - {fileID: 21300000, guid: f9e7c150f8e126540aa2fb23d86c6389, type: 3}
-  _travelSpeed: 6
-  _timeToDestroy: 0.5
---- !u!65 &4339487057524567183
+  _attackDuration: 2
+  _travelToSpeed: 6
+  _travelBackSpeed: 6
+--- !u!65 &2006547092346973268
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484695756215325680}
+  m_GameObject: {fileID: 5852110038477009606}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7405004, y: 0.9092428, z: 0.2}
-  m_Center: {x: 0.016590983, y: -0.018685311, z: 0}
---- !u!54 &874697018095408696
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5656294436110882691
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484695756215325680}
+  m_GameObject: {fileID: 5852110038477009606}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -131,5 +127,5 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0

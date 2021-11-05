@@ -9,28 +9,38 @@ public class HD_Behaviour : MonoBehaviour
     float _currentTimeToAttack;
 
     [SerializeField]
-    GameObject _throwFilesGO;
+    GameObject _throwFilesGO, _discGO;
 
     GameObject _player;
-    HD_Dash_Attack _dash_Attack;
-    HD_ThrowFiles_Attack _throwFiles_Attack;
+    HD_Dash_Attack _dashAttack;
+    HD_ThrowFiles_Attack _throwFilesAttack;
+    HD_Disc_Attack _discAttack;
     
     [HideInInspector]
     public bool rotationLocked = false;
 
     void Start()
     {
-        _dash_Attack = GetComponent<HD_Dash_Attack>();
-        _throwFiles_Attack = GetComponent<HD_ThrowFiles_Attack>();
+        _dashAttack = GetComponent<HD_Dash_Attack>();
+        _throwFilesAttack = GetComponent<HD_ThrowFiles_Attack>();
+        _discAttack = GetComponent<HD_Disc_Attack>();
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
+
+        if (!rotationLocked)
+        {
+            // gira o hd em direção ao jogador de forma suave
+            var targetRotation = Quaternion.LookRotation(_player.transform.position - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeedLookAt * Time.deltaTime);
+        }
+
         if (_currentTimeToAttack <= 0)
         {
-            int attack = Random.Range(0, 2);
+            int attack = Random.Range(0, 3);
             switch (attack)
             {
                 default:
@@ -46,6 +56,10 @@ public class HD_Behaviour : MonoBehaviour
                     ThrowFilesAttack();
                     _currentTimeToAttack = _timeToAttack;
                     break;
+                case 2:
+                    DiscAttack();
+                    _currentTimeToAttack = _timeToAttack;
+                    break;
             }
             _currentTimeToAttack = _timeToAttack;
         }
@@ -53,20 +67,14 @@ public class HD_Behaviour : MonoBehaviour
             _currentTimeToAttack -= Time.deltaTime;
     }
 
-
-    private void FixedUpdate()
+    void DiscAttack()
     {
-        if (!rotationLocked)
-        {
-            // gira o hd em direção ao jogador de forma suave
-            var targetRotation = Quaternion.LookRotation(_player.transform.position - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeedLookAt * Time.deltaTime);
-        }
+        Instantiate(_discGO, transform.position, Quaternion.Euler(new Vector3(45, 0, 0)));
     }
 
     void DashAttack()
     {
-        StartCoroutine(_dash_Attack.SpinIntoPlayer());
+        StartCoroutine(_dashAttack.SpinIntoPlayer());
     }
 
     void ThrowFilesAttack()
