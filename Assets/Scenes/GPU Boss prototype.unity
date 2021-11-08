@@ -555,13 +555,13 @@ MonoBehaviour:
   attackSpeed: 0
   attackRange: 0
   attackDamage: 0
-  attackCooldown: 0
+  attackCooldown: 3
+  attackTimer: 0
   attackDuration: 0
   attackDelay: 0
-  timeToAttack: 3
-  player: {fileID: 0}
-  posLocked: 0
   rotationSpeedLookAt: 1
+  posLocked: 0
+  player: {fileID: 0}
 --- !u!54 &1038915136
 Rigidbody:
   m_ObjectHideFlags: 0
