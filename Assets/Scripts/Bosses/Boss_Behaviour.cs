@@ -3,13 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Boss_Behaviour : MonoBehaviour {
-    [SerializeField] int health;
-    [SerializeField] int damage;
-    [SerializeField] int speed;
-    [SerializeField] int attackSpeed;
-    [SerializeField] int attackRange;
-    [SerializeField] int attackDamage;
-    [SerializeField] int attackCooldown;
-    [SerializeField] int attackDuration;
-    [SerializeField] int attackDelay;
+    [SerializeField] protected int health;
+    [SerializeField] protected int damage;
+    [SerializeField] protected int speed;
+    [SerializeField] protected int attackSpeed;
+    [SerializeField] protected int attackRange;
+    [SerializeField] protected int attackDamage;
+    [SerializeField] protected float attackCooldown = 3f;
+    [SerializeField] protected float attackTimer;
+    /* [SerializeField] protected float timeToAttack = 1f;
+    [SerializeField] protected float currentTimeToAttack; */
+    [SerializeField] protected int attackDuration;
+    [SerializeField] protected int attackDelay;
+    [SerializeField] protected float rotationSpeedLookAt = 1f;
+    [HideInInspector] public bool posLocked = false;
+    [HideInInspector] public GameObject player;
+
+    protected IAttack activeAttack;
+    protected List<IAttack> attacks;
 }

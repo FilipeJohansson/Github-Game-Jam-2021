@@ -13,19 +13,16 @@ public class GPU_Melee_Attack : IAttack  {
     }
 
     public void Attack(MonoBehaviour mono) {
-        Debug.Log("GPU Melee Attack");
         mono.StartCoroutine(DashIntoPlayer(owner));
     }
 
     public IEnumerator DashIntoPlayer(GameObject _owner) {
-        Debug.Log(_owner.name + " is dashing into the player");
         GPU_Behaviour gpu = _owner.GetComponent<GPU_Behaviour>();
         
         // Get the actual pos
         Vector3 initialPos = owner.transform.position;
 
         bool dashing = true;
-        gpu.posLocked = true; // tranca o LookAt do HD
 
         // delay antes do dash
         yield return new WaitForSeconds(0.5f);
@@ -38,6 +35,8 @@ public class GPU_Melee_Attack : IAttack  {
 
         // enquanto n�o tiver chego no target OU n�o ter encostado no jogador, anda na dire��o do target
         while (dashing) {
+            gpu.posLocked = true; // tranca o LookAt do HD
+            
             // lerp padrao
             owner.transform.position = Vector3.Lerp(owner.transform.position, targetV3, spinSpeed * Time.deltaTime);
 
