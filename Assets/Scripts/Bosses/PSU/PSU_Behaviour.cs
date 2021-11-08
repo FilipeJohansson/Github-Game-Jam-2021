@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PSU_Behaviour : MonoBehaviour {
+public class PSU_Behaviour : Boss_Behaviour {
 
     float timeToAttack = 5f;
     float currentTimeToAttack;
