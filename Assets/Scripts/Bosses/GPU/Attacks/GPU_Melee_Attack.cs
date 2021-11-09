@@ -5,8 +5,7 @@ using UnityEngine;
 public class GPU_Melee_Attack : IAttack  {
     GameObject owner;
 
-    [SerializeField]
-    float spinSpeed = 5f;
+    [SerializeField] float spinSpeed = 5f;
 
     public GPU_Melee_Attack(GameObject _owner) {
         owner = _owner;
@@ -16,7 +15,7 @@ public class GPU_Melee_Attack : IAttack  {
         mono.StartCoroutine(DashIntoPlayer(owner));
     }
 
-    public IEnumerator DashIntoPlayer(GameObject _owner) {
+    IEnumerator DashIntoPlayer(GameObject _owner) {
         GPU_Behaviour gpu = _owner.GetComponent<GPU_Behaviour>();
         
         // Get the actual pos

@@ -608,6 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ts_GPU_Distance_Projectile: {fileID: 4460158510407298584, guid: 09581c86e1f1cdd43990bdb1204fabbb, type: 3}
+  ts_PSU_Shock_Attack: {fileID: 2035747311968300228, guid: 6172310b9a364ce46a40586200718ccb, type: 3}
 --- !u!4 &1902621044
 Transform:
   m_ObjectHideFlags: 0

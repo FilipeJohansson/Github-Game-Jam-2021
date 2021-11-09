@@ -16,6 +16,7 @@ public abstract class Boss_Base : MonoBehaviour {
     [SerializeField] protected int attackDuration;
     [SerializeField] protected int attackDelay;
     [SerializeField] protected float rotationSpeedLookAt = 1f;
+    [HideInInspector] protected bool showingAttackArea = false;
     [HideInInspector] public bool posLocked = false;
     [HideInInspector] public GameObject player;
 

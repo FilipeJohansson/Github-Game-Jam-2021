@@ -2,69 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RAM_Behaviour : MonoBehaviour {
-    // to attack the player
-	GameObject player;
-
-    // to binary attach
-    [SerializeField]
-	float timeToAttack = 3f;
-	float currentTimeToAttack;
-
-	[SerializeField]
-	GameObject binaryAttack;
-
-    // to dash attack
-    public float rotationSpeedLookAt;
-
-    RAM_Dash_Attack dash_Attack;
-
-    [HideInInspector]
-    public bool posLocked = false;
-    
-    void Start(){
-        dash_Attack = GetComponent<RAM_Dash_Attack>();
-    }
-
-
-    // Start is called before the first frame update
+public class RAM_Behaviour : Boss_Base {
 	void Awake() {
 		// Find player object
 		player = GameObject.FindGameObjectWithTag("Player");
 
+        attacks = new List<IAttack> {
+            new RAM_Binary_Attack(gameObject),
+            new RAM_Dash_Attack(gameObject)
+        };
+
 		// Start currentTimeToAttack
-		currentTimeToAttack = timeToAttack;
+		attackTimer = attackCooldown;
 	}
 
-    void Update(){
+    void FixedUpdate(){
         // Boss look at the player
-		transform.LookAt(player.transform);
+		if (!posLocked)
+            transform.LookAt(player.transform);
 
         // Verify if can attack
-		if (currentTimeToAttack <= 0) {
-            int attack = Random.Range(0, 2);
-            Debug.Log("distance attack " + attack);
-            if(attack == 0)
-                StartCoroutine(dash_Attack.SpinIntoPlayer());
-            else {
-                // Spawn the attack
-                Instantiate(binaryAttack, transform.position, transform.rotation);
-                // Reset timeToAttack
-                currentTimeToAttack = timeToAttack;
-            }
+		if (attackTimer <= 0) {
+            // Spawn the attack
+            SetAttack(attacks[Random.Range(0, attacks.Count)]);
+            activeAttack.Attack(this);
 
             // reset time to attack
-            currentTimeToAttack = timeToAttack;
+            attackTimer = attackCooldown;
 		} else
-			currentTimeToAttack -= Time.deltaTime;
+			attackTimer -= Time.deltaTime;
     }
 
-	// Update is called once per frame
-	void FixedUpdate() {
-        var targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeedLookAt * Time.deltaTime);		
-	}
-
-
-
+    void SetAttack(IAttack _attack) {
+        activeAttack = _attack;
+    }
 }

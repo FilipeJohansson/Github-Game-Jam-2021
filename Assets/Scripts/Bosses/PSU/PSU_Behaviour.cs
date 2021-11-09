@@ -1,78 +1,42 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PSU_Behaviour : Boss_Base {
-
-    float timeToAttack = 5f;
-    float currentTimeToAttack;
-
-    [SerializeField]
-    GameObject shockWave;
-    [SerializeField]
-    GameObject attackArea;
-    bool showAttackArea = false;
-
-    bool lookingToPlayer = true;
-
-    GameObject mainCamera;
-    public bool isFacing = true;
-
-    // Start is called before the first frame update
     void Awake() {
         // Find player object
         player = GameObject.FindGameObjectWithTag("Player");
 
+        attacks = new List<IAttack> {
+            new PSU_Shock_Attack(gameObject)
+        };
+
         // Start currentTimeToAttack
-        currentTimeToAttack = timeToAttack;
+        attackTimer = attackCooldown;
     }
 
     // Update is called once per frame
     void FixedUpdate() {
-        if (lookingToPlayer) {
-            // Rotate towards player
+        if (!posLocked)
             transform.LookAt(player.transform);
-        }
 
         // Verify if can attack
-        if (currentTimeToAttack <= 0) {
-            StartCoroutine(ShockAttack());
+        if (attackTimer <= 0) {
+            // Spawn the attack
+            SetAttack(attacks[Random.Range(0, attacks.Count)]);
+            activeAttack.Attack(this);
+
+            // Reset timeToAttack
+            attackTimer = attackCooldown;
         } else
-            currentTimeToAttack -= Time.deltaTime;
-
-        if(showAttackArea) {
-             StartCoroutine(ShowAttackArea());
-        }
+            attackTimer -= Time.deltaTime;
+/* 
+        if (showingAttackArea) {
+            StartCoroutine(ShowAttackArea());
+        } */
     }
 
-    IEnumerator ShockAttack() {
-        lookingToPlayer = false;
-        // Reset timeToAttack
-        currentTimeToAttack = timeToAttack;
-
-        showAttackArea = true;
-
-        yield return new WaitForSeconds(1f);
-
-        showAttackArea = false;
-
-        // Spawn the attack
-        Instantiate(shockWave, transform.position, transform.rotation);
-
-        yield return new WaitForSeconds(.5f);
-
-        lookingToPlayer = true;
-
-        yield return null;
-    }
-
-    IEnumerator ShowAttackArea() {
-        attackArea.SetActive(true);
-        attackArea.GetComponentInChildren<SpriteRenderer>().material.color = new Color(1, 1, 1, .7f);
-
-        yield return new WaitForSeconds(1.5f);
-
-        attackArea.SetActive(false);
-
-        yield return null;
+    void SetAttack(IAttack _attack) {
+        activeAttack = _attack;
     }
 }

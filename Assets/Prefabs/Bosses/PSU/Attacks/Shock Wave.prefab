@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2035747311968300233}
   - component: {fileID: 2035747311968300230}
   - component: {fileID: 2035747311968300231}
-  - component: {fileID: 5367111230447202227}
   - component: {fileID: 113161363271607689}
+  - component: {fileID: 2567465147404511639}
   m_Layer: 0
   m_Name: Shock Wave
   m_TagString: Untagged
@@ -4866,18 +4866,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &5367111230447202227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035747311968300228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 731242ddee4eeae4a96260c8e5fda21b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &113161363271607689
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4894,6 +4882,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &2567465147404511639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035747311968300228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c47a146f4ce6812499b48b507ce8616c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationVelocity: 0
+  moveVelocity: 0
+  timeToDestroy: 5
+  currentTimeToDestroy: 0
+  itemsSprite: []
+  colliderObject: {fileID: 0}
+  ps: {fileID: 0}
 --- !u!1 &8222252474648802178
 GameObject:
   m_ObjectHideFlags: 0

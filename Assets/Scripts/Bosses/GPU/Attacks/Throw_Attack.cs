@@ -1,6 +1,6 @@
 using UnityEngine;
-public class Throw_Attack : Attack_Base {
 
+public class Throw_Attack : Attack_Base {
     // Start is called before the first frame update
     void Awake() {
 		spriteChild = gameObject.transform.GetChild(0);

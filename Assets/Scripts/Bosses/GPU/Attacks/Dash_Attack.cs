@@ -14,9 +14,6 @@ public class Dash_Attack : MonoBehaviour {
 
     GPU_Behaviour gpu_behaviour;
 
-    [SerializeField]
-    float spinSpeed = 5f;
-
     public bool isFacing = true;
 
     // Start is called before the first frame update
@@ -49,7 +46,7 @@ public class Dash_Attack : MonoBehaviour {
 			Flip();
     }
 
-    public IEnumerator DashIntoPlayer() {
+   /*  IEnumerator DashIntoPlayer() {
         // Get the actual pos
         Vector3 initialPos = transform.position;
 
@@ -101,7 +98,7 @@ public class Dash_Attack : MonoBehaviour {
 
         gpu_behaviour.posLocked = false;
     }
-
+ */
     void Flip() {
 		isFacing = !isFacing;
 

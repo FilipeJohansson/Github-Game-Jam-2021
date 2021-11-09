@@ -9,6 +9,9 @@ public abstract class Attack_Base : MonoBehaviour {
     [SerializeField] protected float currentTimeToDestroy;
     [SerializeField] protected Sprite[] itemsSprite;
 
+    [SerializeField] protected Transform colliderObject;
+    [SerializeField] protected ParticleSystem ps;
+
     protected Transform spriteChild;
     protected SpriteRenderer spriteRenderer;
     protected GameObject mainCamera;
