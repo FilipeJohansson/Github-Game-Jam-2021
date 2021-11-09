@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GPU_Behaviour : Boss_Behaviour {
+public class GPU_Behaviour : Boss_Base {
     void Awake() {
         // Find player object
         player = GameObject.FindGameObjectWithTag("Player");

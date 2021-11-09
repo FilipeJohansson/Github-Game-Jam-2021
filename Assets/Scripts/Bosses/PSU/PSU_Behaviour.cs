@@ -1,12 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class PSU_Behaviour : Boss_Behaviour {
+public class PSU_Behaviour : Boss_Base {
 
     float timeToAttack = 5f;
     float currentTimeToAttack;
-
-    GameObject player;
 
     [SerializeField]
     GameObject shockWave;

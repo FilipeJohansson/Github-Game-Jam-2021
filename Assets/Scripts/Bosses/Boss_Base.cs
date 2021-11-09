@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Boss_Behaviour : MonoBehaviour {
+public abstract class Boss_Base : MonoBehaviour {
     [SerializeField] protected int health;
     [SerializeField] protected int damage;
     [SerializeField] protected int speed;
