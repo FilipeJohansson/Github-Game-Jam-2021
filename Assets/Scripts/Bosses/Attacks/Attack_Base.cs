@@ -24,6 +24,7 @@ public abstract class Attack_Base : MonoBehaviour {
     [Header("Collider Attributes")]
     [SerializeField] protected Transform colliderObject;
     [SerializeField] protected bool collided = false;
+    [SerializeField] protected bool collidedPlayer = false;
 
     [Header("Sprite Attributes")]
     protected Transform spriteChild;

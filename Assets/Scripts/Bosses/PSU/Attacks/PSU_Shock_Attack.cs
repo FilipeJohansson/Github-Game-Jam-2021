@@ -14,9 +14,10 @@ public class PSU_Shock_Attack : IAttack {
     }
 
     IEnumerator ShockAttack(GameObject _owner) {
-        PSU_Behaviour psu = _owner.GetComponent<PSU_Behaviour>();
+        PSU_Behaviour psu_Behaviour = _owner.GetComponent<PSU_Behaviour>();
 
-        psu.posLocked = true;
+        psu_Behaviour.posLocked = true;
+        psu_Behaviour.isAttacking = true;
 
         GM.PSU_Attack_Area.SetActive(true);
         GM.PSU_Attack_Area.GetComponentInChildren<SpriteRenderer>().material.color = new Color(1, 1, 1, .7f);
@@ -30,7 +31,8 @@ public class PSU_Shock_Attack : IAttack {
 
         yield return new WaitForSeconds(.5f);
 
-        psu.posLocked = false;
+        psu_Behaviour.posLocked = false;
+        psu_Behaviour.isAttacking = false;
 
         yield return null;
     }

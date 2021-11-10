@@ -4877,7 +4877,7 @@ Rigidbody:
   m_Mass: 100
   m_Drag: 50
   m_AngularDrag: 0
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 4
@@ -4894,12 +4894,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47a146f4ce6812499b48b507ce8616c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
   rotationVelocity: 0
   moveVelocity: 0
   timeToDestroy: 5
   currentTimeToDestroy: 0
   itemsSprite: []
+  spriteRenderer: {fileID: 0}
   colliderObject: {fileID: 0}
+  collided: 0
+  collidedPlayer: 0
   ps: {fileID: 0}
 --- !u!1 &8222252474648802178
 GameObject:

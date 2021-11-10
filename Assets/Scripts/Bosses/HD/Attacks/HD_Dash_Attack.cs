@@ -52,6 +52,8 @@ public class HD_Dash_Attack : IAttack {
 
         hd_behaviour.posLocked = false;
         hd_behaviour.isAttacking = false;
+
+        yield return null;
     }
 
     private void OnTriggerEnter(Collider other) {
