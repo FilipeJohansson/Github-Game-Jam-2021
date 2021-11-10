@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[SelectionBase]
 public class Throw_Files : Attack_Base {
     // Start is called before the first frame update
     void Awake() {
