@@ -2,83 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HD_Behaviour : MonoBehaviour
-{
-    [SerializeField]
-    float _timeToAttack = 2f, _rotationSpeedLookAt;
-    float _currentTimeToAttack;
+public class HD_Behaviour : Boss_Base {
+    void Awake() {
+        // Find player object
+        player = GameObject.FindGameObjectWithTag("Player");
 
-    [SerializeField]
-    GameObject _throwFilesGO, _discGO;
+        attacks = new List<IAttack> {
+            //new HD_Dash_Attack(gameObject),
+            //new HD_Disc_Attack(gameObject),
+            new HD_ThrowFiles_Attack(gameObject)
+        };
 
-    GameObject _player;
-    HD_Dash_Attack _dashAttack;
-    HD_ThrowFiles_Attack _throwFilesAttack;
-    HD_Disc_Attack _discAttack;
-    
-    [HideInInspector]
-    public bool rotationLocked = false;
-
-    void Start()
-    {
-        _dashAttack = GetComponent<HD_Dash_Attack>();
-        _throwFilesAttack = GetComponent<HD_ThrowFiles_Attack>();
-        _discAttack = GetComponent<HD_Disc_Attack>();
-        _player = GameObject.FindGameObjectWithTag("Player");
+        // Start currentTimeToAttack
+        attackTimer = attackCooldown;
     }
 
 
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
 
-        if (!rotationLocked)
-        {
-            // gira o hd em direção ao jogador de forma suave
-            var targetRotation = Quaternion.LookRotation(_player.transform.position - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeedLookAt * Time.deltaTime);
+        if (!posLocked) {
+            /* // gira o hd em direï¿½ï¿½o ao jogador de forma suave
+            var targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeedLookAt * Time.deltaTime); */
+
+            // Boss look at the player
+            transform.LookAt(player.transform);
         }
 
-        if (_currentTimeToAttack <= 0)
-        {
-            int attack = Random.Range(0, 3);
-            switch (attack)
-            {
-                default:
-                    break;
-                case 0:
-                    if (!rotationLocked)
-                    {
-                        DashAttack();
-                        _currentTimeToAttack = _timeToAttack;
-                    }
-                    break;
-                case 1:
-                    ThrowFilesAttack();
-                    _currentTimeToAttack = _timeToAttack;
-                    break;
-                case 2:
-                    DiscAttack();
-                    _currentTimeToAttack = _timeToAttack;
-                    break;
-            }
-            _currentTimeToAttack = _timeToAttack;
-        }
-        else
-            _currentTimeToAttack -= Time.deltaTime;
+        // Verify if can attack
+        if (attackTimer <= 0) {
+            // Spawn the attack
+            SetAttack(attacks[Random.Range(0, attacks.Count)]);
+            activeAttack.Attack(this);
+
+            // Reset timeToAttack
+            attackTimer = attackCooldown;
+        } else
+            attackTimer -= Time.deltaTime;
     }
 
-    void DiscAttack()
-    {
-        Instantiate(_discGO, transform.position, Quaternion.Euler(new Vector3(45, 0, 0)));
+    void SetAttack(IAttack _attack) {
+        activeAttack = _attack;
     }
 
-    void DashAttack()
-    {
-        StartCoroutine(_dashAttack.SpinIntoPlayer());
-    }
+    /*  void DiscAttack() {
+         Instantiate(_discGO, transform.position, Quaternion.Euler(new Vector3(45, 0, 0)));
+     }
 
-    void ThrowFilesAttack()
-    {
-        Instantiate(_throwFilesGO, transform.position, Quaternion.Euler(new Vector3(45,0,0)));
-    }
+     void DashAttack() {
+         StartCoroutine(_dashAttack.SpinIntoPlayer());
+     }
+
+     void ThrowFilesAttack() {
+         Instantiate(_throwFilesGO, transform.position, Quaternion.Euler(new Vector3(45, 0, 0)));
+     } */
 }

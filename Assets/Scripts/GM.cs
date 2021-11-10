@@ -8,12 +8,14 @@ public class GM : MonoBehaviour {
     public GameObject ts_PSU_Shock_Attack;
     public GameObject ts_PSU_Attack_Area;
     public GameObject ts_RAM_Binary;
+    public GameObject ts_HD_ThrowFiles;
 
     // Statics References
     static public GameObject GPU_Distance_Projectile;
     static public GameObject PSU_Shock_Attack;
     static public GameObject PSU_Attack_Area;
     static public GameObject RAM_Binary;
+    static public GameObject HD_ThrowFiles;
 
     void Start() {
         // Set static references
@@ -21,5 +23,6 @@ public class GM : MonoBehaviour {
         PSU_Shock_Attack = ts_PSU_Shock_Attack;
         PSU_Attack_Area = ts_PSU_Attack_Area;
         RAM_Binary = ts_RAM_Binary;
+        HD_ThrowFiles = ts_HD_ThrowFiles;
     }
 }

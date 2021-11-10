@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HD_Disc_Attack : MonoBehaviour
-{
-    [SerializeField]
-    float _attackDuration, _travelToSpeed, _travelBackSpeed;
+public class HD_Disc_Attack : MonoBehaviour {
+    [SerializeField] float _attackDuration, _travelToSpeed, _travelBackSpeed;
     float _currentAttackTime;
 
     bool _collidedPlayer = false;
@@ -16,8 +14,7 @@ public class HD_Disc_Attack : MonoBehaviour
     HD_Behaviour _hdBehaviour;
 
     // Start is called before the first frame update
-    void Start()
-    {
+   /*  void Start() {
         _player = GameObject.FindGameObjectWithTag("Player");
         _hd = GameObject.FindGameObjectWithTag("Boss");
 
@@ -27,30 +24,24 @@ public class HD_Disc_Attack : MonoBehaviour
         _hdBehaviour.rotationLocked = true;
     }
 
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         transform.Rotate(new Vector3(0, 0, -30));
 
         _returning = _currentAttackTime <= 0 || _collidedPlayer ? true : false;
-        
-        if (_returning)
-        {
+
+        if (_returning) {
             transform.position = Vector3.Lerp(transform.position, _hd.transform.position, _travelBackSpeed * Time.deltaTime);
-            if (_collidedHD) 
-            {
+            if (_collidedHD) {
                 _hdBehaviour.rotationLocked = false;
                 Destroy(gameObject);
             }
-        }
-        else
-        {
+        } else {
             transform.position = Vector3.Lerp(transform.position, _player.transform.position, _travelToSpeed * Time.deltaTime);
             _currentAttackTime -= Time.deltaTime;
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
+    private void OnCollisionEnter(Collision collision) {
         if (collision.collider.tag == "Player")
             _collidedPlayer = true;
 
@@ -58,9 +49,8 @@ public class HD_Disc_Attack : MonoBehaviour
             _collidedHD = true;
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
+    private void OnCollisionExit(Collision collision) {
         if (collision.collider.tag == "Boss")
             _collidedHD = false;
-    }
+    } */
 }
