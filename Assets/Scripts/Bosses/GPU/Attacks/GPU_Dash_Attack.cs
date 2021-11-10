@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GPU_Melee_Attack : IAttack  {
+public class GPU_Dash_Attack : IAttack  {
     GameObject owner;
     bool collided = false;
     [SerializeField] float spinSpeed = 5f;
 
-    public GPU_Melee_Attack(GameObject _owner) {
+    public GPU_Dash_Attack(GameObject _owner) {
         owner = _owner;
     }
 
