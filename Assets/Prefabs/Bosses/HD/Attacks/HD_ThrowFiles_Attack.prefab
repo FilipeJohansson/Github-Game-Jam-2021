@@ -79,13 +79,14 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   rotationVelocity: 400
   moveVelocity: 10
-  timeToDestroy: 5
+  timeToDestroy: 20
   currentTimeToDestroy: 0
   itemsSprite:
   - {fileID: 21300000, guid: f9e7c150f8e126540aa2fb23d86c6389, type: 3}
   - {fileID: 21300000, guid: b897bbc7c4841ec40b1448dd9e0685eb, type: 3}
   - {fileID: 21300000, guid: fa899e8f1a4d0b543919b0e23170dd8a, type: 3}
   - {fileID: 21300000, guid: c489260d6ac4b6541b5b8202349a0354, type: 3}
+  spriteRenderer: {fileID: 0}
   colliderObject: {fileID: 0}
   collided: 0
   ps: {fileID: 0}

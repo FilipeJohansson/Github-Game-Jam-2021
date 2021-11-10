@@ -269,7 +269,6 @@ GameObject:
   - component: {fileID: 1415933910}
   - component: {fileID: 1415933914}
   - component: {fileID: 1415933909}
-  - component: {fileID: 1415933908}
   m_Layer: 0
   m_Name: HD Boss
   m_TagString: Boss
@@ -277,19 +276,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1415933908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1415933907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdd8025399622154dbbc2d7bd364f479, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spinSpeed: 6
 --- !u!114 &1415933909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,11 +294,13 @@ MonoBehaviour:
   attackSpeed: 0
   attackRange: 0
   attackDamage: 0
+  attackArea: {fileID: 0}
   attackCooldown: 3
   attackTimer: 0
   attackDuration: 0
   attackDelay: 0
   rotationSpeedLookAt: 1
+  isAttacking: 0
   posLocked: 0
   player: {fileID: 0}
 --- !u!65 &1415933910
@@ -323,7 +311,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415933907}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}

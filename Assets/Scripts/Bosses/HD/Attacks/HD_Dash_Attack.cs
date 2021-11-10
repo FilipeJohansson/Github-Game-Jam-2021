@@ -2,43 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HD_Dash_Attack : MonoBehaviour {
-    public float _spinSpeed;
+public class HD_Dash_Attack : IAttack {
+    GameObject owner;
+    bool collided = false;
+    [SerializeField] float spinSpeed = 5f;
 
-    GameObject _player;
-    HD_Behaviour _hd_behaviour;
-
-    bool _collided = false;
-
-    private void Start() {
-        _hd_behaviour = GetComponent<HD_Behaviour>();
-        _player = GameObject.FindGameObjectWithTag("Player");
+    public HD_Dash_Attack(GameObject _owner) {
+        owner = _owner;
     }
 
-    /* public IEnumerator SpinIntoPlayer() {
+    public void Attack(MonoBehaviour mono) {
+        mono.StartCoroutine(SpinIntoPlayer(owner));
+    }
+
+    IEnumerator SpinIntoPlayer(GameObject _owner) {
+        HD_Behaviour hd_behaviour = _owner.GetComponent<HD_Behaviour>();
+
         // delay antes do dash
         yield return new WaitForSeconds(0.5f);
 
         bool dashing = true;
-        _hd_behaviour.rotationLocked = true; // tranca o LookAt do HD
+        hd_behaviour.posLocked = true; // tranca o LookAt do HD
 
         // pega a posi��o do player quando � acionado o ataque (sem atualizar mais, pra que ele v� na dire��o q o jogador estava e nao a atual)
-        Vector3 targetV3 = _player.transform.position;
+        Vector3 targetV3 = hd_behaviour.player.transform.position;
         // um vector2 pra poder comparar as posi��es sem se preocupar com Y. aproveito pra arredondar pq se n da uns comportamentos estranhos de lerp infinito. (interessante testar dnv)
         Vector2 targetV2 = new Vector2(Mathf.Round(targetV3.x), Mathf.Round(targetV3.z));
 
         // enquanto n�o tiver chego no target OU n�o ter encostado no jogador, anda na dire��o do target
         while (dashing) {
+            hd_behaviour.isAttacking = true;
+
             // lerp padrao
-            transform.position = Vector3.Lerp(transform.position, targetV3, _spinSpeed * Time.deltaTime);
-            transform.Rotate(new Vector3(0, 10, 0));
+            hd_behaviour.transform.position = Vector3.Lerp(hd_behaviour.transform.position, targetV3, spinSpeed * Time.deltaTime);
+            hd_behaviour.transform.Rotate(new Vector3(0, 10, 0));
 
             // vector2 com a posi��o arredondada do HD
-            Vector2 currentPos = new Vector2(Mathf.Round(transform.position.x), Mathf.Round(transform.position.z));
+            Vector2 currentPos = new Vector2(Mathf.Round(hd_behaviour.transform.position.x), Mathf.Round(hd_behaviour.transform.position.z));
 
             // se o HD estiver no target ou bateu no player, sai do while
             //Pra n ter q usar o OnCollisionEnter e zoar a Coroutine, acho que um jeito bom seria s� ver se ele vai estar na posi��o do player. Se sim, corta fora
-            if (currentPos == targetV2 || _collided) {
+            if (currentPos == targetV2 || collided) {
                 break;
             } else {
                 yield return null;
@@ -46,16 +50,12 @@ public class HD_Dash_Attack : MonoBehaviour {
 
         }
 
-        _hd_behaviour.rotationLocked = false;
+        hd_behaviour.posLocked = false;
+        hd_behaviour.isAttacking = false;
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.collider.tag == "Player")
-            _collided = true;
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "Player")
+            collided = true;
     }
-
-    private void OnCollisionExit(Collision collision) {
-        if (collision.collider.tag == "Player")
-            _collided = false;
-    } */
 }

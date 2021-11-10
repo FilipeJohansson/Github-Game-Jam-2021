@@ -2,15 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dash_Attack : MonoBehaviour {
+public class Dash_Attack : Attack_Base {
     public GameObject swordObject;
-    Transform spriteChild;
-    SpriteRenderer spriteRenderer;
-
-    [SerializeField]
-    Sprite[] swordsSprite;
-
-    GameObject mainCamera;
 
     GPU_Behaviour gpu_behaviour;
 
@@ -25,7 +18,7 @@ public class Dash_Attack : MonoBehaviour {
         // Get the sprite renderer of object
         spriteRenderer = spriteChild.GetComponent<SpriteRenderer>();
         // Set the sprite to a random sprite
-        spriteRenderer.sprite = swordsSprite[Random.Range(0, swordsSprite.Length)];
+        spriteRenderer.sprite = itemsSprite[Random.Range(0, itemsSprite.Length)];
     }
 
     // Update is called once per frame
