@@ -78,15 +78,16 @@ MonoBehaviour:
   player: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
   rotationVelocity: 400
-  moveVelocity: 10
+  moveVelocity: 4.5
   timeToDestroy: 5
   currentTimeToDestroy: 0
   itemsSprite: []
+  spriteRenderer: {fileID: 0}
   colliderObject: {fileID: 0}
   collided: 0
+  collidedPlayer: 0
   ps: {fileID: 0}
-  _travelToSpeed: 3.5
-  _travelBackSpeed: 6
+  travelBackVelocity: 8
 --- !u!212 &9110505143521053802
 SpriteRenderer:
   m_ObjectHideFlags: 0

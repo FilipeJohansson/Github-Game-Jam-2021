@@ -33,18 +33,6 @@ public class Throw_Files : Attack_Base {
         }
 
         currentTimeToDestroy -= Time.deltaTime;
-
-        /* if (_currentTimeToDestroy <= 0 || collided) {
-            if (_chosenFileSprite.name != "fileBat.png") {
-                //TODO: Acionar efeito no player (slow, dano reduzido ou algo assim sei la)
-            }
-
-            Destroy(gameObject);
-        } else {
-            // viaja ate o player
-            transform.position = Vector3.Lerp(transform.position, target, _travelSpeed * Time.deltaTime);
-            _currentTimeToDestroy -= Time.deltaTime;
-        } */
     }
 
     private void OnTriggerEnter(Collider other) {

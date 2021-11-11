@@ -4,26 +4,23 @@ using UnityEngine;
 
 public class Disc_Attack : Attack_Base {
     [Header("Disc Attack")]
-    [SerializeField] float _travelToSpeed;
-    [SerializeField] float _travelBackSpeed;
-    bool _collidedPlayer = false;
-    bool _collidedHD = false;
-    bool _returning = false;
+    [SerializeField] float travelBackVelocity;
+    bool returning = false;
 
-    GameObject _hd;
-    HD_Behaviour _hdBehaviour;
+    GameObject hd;
+    HD_Behaviour hd_Behaviour;
 
     // Start is called before the first frame update
    void Awake() {
         player = GameObject.FindGameObjectWithTag("Player");
-        _hd = GameObject.FindGameObjectWithTag("Boss");
+        hd = GameObject.FindGameObjectWithTag("Boss");
+        hd_Behaviour = hd.GetComponent<HD_Behaviour>();
 
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 		transform.forward = mainCamera.transform.forward;
 
-        _hdBehaviour = _hd.GetComponent<HD_Behaviour>();
-        _hdBehaviour.posLocked = true;
-        _hdBehaviour.isAttacking = true;
+        hd_Behaviour.posLocked = true;
+        hd_Behaviour.isAttacking = true;
 
         currentTimeToDestroy = timeToDestroy;
     }
@@ -31,31 +28,32 @@ public class Disc_Attack : Attack_Base {
     void FixedUpdate() {
         transform.Rotate(new Vector3(0, 0, -30));
 
-        _returning = currentTimeToDestroy <= 0 || _collidedPlayer ? true : false;
+        returning = currentTimeToDestroy <= 0 || collidedPlayer ? true : false;
 
-        if (_returning) {
-            transform.position = Vector3.Lerp(transform.position, _hd.transform.position, _travelBackSpeed * Time.deltaTime);
-            if (_collidedHD) {
-                _hdBehaviour.posLocked = false;
-                _hdBehaviour.isAttacking = false;
+        if (returning) {
+            transform.position = Vector3.Lerp(transform.position, hd.transform.position, travelBackVelocity * Time.deltaTime);
+            if (collided) {
+                hd_Behaviour.posLocked = false;
+                hd_Behaviour.isAttacking = false;
                 Destroy(gameObject);
             }
         } else {
-            transform.position = Vector3.Lerp(transform.position, player.transform.position, _travelToSpeed * Time.deltaTime);
-            currentTimeToDestroy -= Time.deltaTime;
+            transform.position = Vector3.Lerp(transform.position, player.transform.position, moveVelocity * Time.deltaTime);
         }
+
+        currentTimeToDestroy -= Time.deltaTime;
     }
 
     void OnTriggerEnter(Collider other) {
         if (other.tag == "Player")
-            _collidedPlayer = true;
+            collidedPlayer = true;
 
         if (other.tag == "Boss")
-            _collidedHD = true;
+            collided = true;
     }
 
     void OnTriggerExit(Collider other) {
         if (other.tag == "Boss")
-            _collidedHD = false;
+            collided = false;
     }
 }

@@ -19,13 +19,15 @@ public abstract class Attack_Base : MonoBehaviour {
     [Header("Sprite Attributes")]
     [SerializeField] protected Sprite[] itemsSprite;
     
+    [SerializeField] protected SpriteRenderer spriteRenderer;
+    
     [Header("Collider Attributes")]
     [SerializeField] protected Transform colliderObject;
     [SerializeField] protected bool collided = false;
+    [SerializeField] protected bool collidedPlayer = false;
 
     [Header("Sprite Attributes")]
     protected Transform spriteChild;
-    protected SpriteRenderer spriteRenderer;
 
     [Header("Particle System Attributes")]
     [SerializeField] protected ParticleSystem ps;

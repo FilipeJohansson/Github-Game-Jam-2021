@@ -21,16 +21,13 @@ public class Binary_Attack : Attack_Base {
         // Translate the object to front
         transform.Translate(Vector3.forward * Time.deltaTime * moveVelocity);
 
-        if (currentTimeToDestroy <= 0)
+        if (currentTimeToDestroy <= 0 || collided)
             Destroy(gameObject); // to don't accumulate binaries in the game
-        else
-            currentTimeToDestroy -= Time.deltaTime;
+        
+        currentTimeToDestroy -= Time.deltaTime;
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Player") {
-            Debug.Log("Player hit");
-            Destroy(gameObject);
-        }
+        if (other.tag == "Player") collided = true;
     }
 }

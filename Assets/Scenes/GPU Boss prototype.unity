@@ -450,9 +450,9 @@ GameObject:
   - component: {fileID: 1038915133}
   - component: {fileID: 1038915132}
   - component: {fileID: 1038915131}
+  - component: {fileID: 1038915136}
   - component: {fileID: 1038915130}
   - component: {fileID: 1038915134}
-  - component: {fileID: 1038915136}
   m_Layer: 0
   m_Name: GPU Boss
   m_TagString: Untagged
@@ -468,7 +468,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038915129}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -555,11 +555,13 @@ MonoBehaviour:
   attackSpeed: 0
   attackRange: 0
   attackDamage: 0
+  attackArea: {fileID: 0}
   attackCooldown: 3
   attackTimer: 0
   attackDuration: 0
   attackDelay: 0
   rotationSpeedLookAt: 1
+  isAttacking: 0
   posLocked: 0
   player: {fileID: 0}
 --- !u!54 &1038915136
@@ -573,7 +575,7 @@ Rigidbody:
   m_Mass: 100
   m_Drag: 50
   m_AngularDrag: 0
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 4
@@ -609,6 +611,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ts_GPU_Distance_Projectile: {fileID: 4460158510407298584, guid: 09581c86e1f1cdd43990bdb1204fabbb, type: 3}
   ts_PSU_Shock_Attack: {fileID: 2035747311968300228, guid: 6172310b9a364ce46a40586200718ccb, type: 3}
+  ts_PSU_Attack_Area: {fileID: 0}
+  ts_RAM_Binary: {fileID: 0}
+  ts_HD_ThrowFiles: {fileID: 0}
+  ts_HD_Disc_Attack: {fileID: 0}
 --- !u!4 &1902621044
 Transform:
   m_ObjectHideFlags: 0
