@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 1038915134}
   m_Layer: 0
   m_Name: PSU Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -624,15 +624,15 @@ MonoBehaviour:
   attackSpeed: 0
   attackRange: 0
   attackDamage: 0
+  attackArea: {fileID: 1854319228}
   attackCooldown: 5
   attackTimer: 0
   attackDuration: 0
   attackDelay: 0
   rotationSpeedLookAt: 1
+  isAttacking: 0
   posLocked: 0
   player: {fileID: 0}
-  shockWave: {fileID: 2035747311968300228, guid: 6172310b9a364ce46a40586200718ccb, type: 3}
-  attackArea: {fileID: 1854319228}
 --- !u!54 &1038915136
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -826,6 +826,9 @@ MonoBehaviour:
   ts_GPU_Distance_Projectile: {fileID: 4460158510407298584, guid: 09581c86e1f1cdd43990bdb1204fabbb, type: 3}
   ts_PSU_Shock_Attack: {fileID: 2035747311968300228, guid: 6172310b9a364ce46a40586200718ccb, type: 3}
   ts_PSU_Attack_Area: {fileID: 1854319228}
+  ts_RAM_Binary: {fileID: 0}
+  ts_HD_ThrowFiles: {fileID: 0}
+  ts_HD_Disc_Attack: {fileID: 0}
 --- !u!4 &2096577048
 Transform:
   m_ObjectHideFlags: 0

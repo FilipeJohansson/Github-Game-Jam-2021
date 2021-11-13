@@ -8,6 +8,9 @@ public abstract class Attack_Base : MonoBehaviour {
     [SerializeField] protected Vector3 target;
     protected GameObject mainCamera;
 
+    [Header("Damage Attributes")]
+    [SerializeField] protected float damage = 1f;
+
     [Header("Move Attributes")]
     [SerializeField] protected float rotationVelocity = 400f;
     [SerializeField] protected float moveVelocity = 10f;

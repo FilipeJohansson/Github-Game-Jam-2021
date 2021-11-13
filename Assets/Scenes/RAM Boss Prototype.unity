@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 637341577}
   m_Layer: 0
   m_Name: RAM Boss (1)
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -261,11 +261,13 @@ MonoBehaviour:
   attackSpeed: 0
   attackRange: 0
   attackDamage: 0
+  attackArea: {fileID: 0}
   attackCooldown: 3
   attackTimer: 0
   attackDuration: 0
   attackDelay: 0
   rotationSpeedLookAt: 5
+  isAttacking: 0
   posLocked: 0
   player: {fileID: 0}
 --- !u!65 &637341578
@@ -453,7 +455,7 @@ GameObject:
   - component: {fileID: 1427170992}
   m_Layer: 0
   m_Name: RAM Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -476,11 +478,13 @@ MonoBehaviour:
   attackSpeed: 0
   attackRange: 0
   attackDamage: 0
+  attackArea: {fileID: 0}
   attackCooldown: 3
   attackTimer: 0
   attackDuration: 0
   attackDelay: 0
   rotationSpeedLookAt: 5
+  isAttacking: 0
   posLocked: 0
   player: {fileID: 0}
 --- !u!65 &1427170993
@@ -608,6 +612,8 @@ MonoBehaviour:
   ts_PSU_Shock_Attack: {fileID: 2035747311968300228, guid: 6172310b9a364ce46a40586200718ccb, type: 3}
   ts_PSU_Attack_Area: {fileID: 0}
   ts_RAM_Binary: {fileID: 665733719749273131, guid: 5d615a3d23f1148409d621d3c499b911, type: 3}
+  ts_HD_ThrowFiles: {fileID: 0}
+  ts_HD_Disc_Attack: {fileID: 0}
 --- !u!4 &1478995225
 Transform:
   m_ObjectHideFlags: 0
@@ -635,6 +641,7 @@ GameObject:
   - component: {fileID: 1499229980}
   - component: {fileID: 1499229983}
   - component: {fileID: 1499229979}
+  - component: {fileID: 1499229984}
   - component: {fileID: 1499229978}
   m_Layer: 0
   m_Name: Player
@@ -748,3 +755,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &1499229984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499229977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a44aa6e8e53c747be5e69fe90489c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _life: 40

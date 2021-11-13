@@ -7,7 +7,7 @@ public class Binary_Attack : Attack_Base {
         spriteChild = gameObject.transform.GetChild(0);
         spriteRenderer = spriteChild.GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = itemsSprite[Random.Range(0, itemsSprite.Length)];
-
+      
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         spriteChild.transform.forward = mainCamera.transform.forward;
 
@@ -28,6 +28,9 @@ public class Binary_Attack : Attack_Base {
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player") collided = true;
+        if (other.tag == "Player") {
+            collided = true;
+            other.gameObject.GetComponent<Player_Behaviour>().takeDamage(damage);
+        }
     }
 }
