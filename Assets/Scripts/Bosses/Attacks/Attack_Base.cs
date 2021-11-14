@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Attack_Base : MonoBehaviour {
     [Header("Context Attributes")]
+    [SerializeField] protected GM gm;
     [SerializeField] protected GameObject player;
     [SerializeField] protected Vector3 target;
     protected GameObject mainCamera;
@@ -34,4 +35,8 @@ public abstract class Attack_Base : MonoBehaviour {
 
     [Header("Particle System Attributes")]
     [SerializeField] protected ParticleSystem ps;
+
+    void Start() {
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GM>();
+    }
 }

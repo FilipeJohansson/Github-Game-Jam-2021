@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GM : MonoBehaviour {
     // Inspector variables
+    public GameObject ts_Player;
     public GameObject ts_GPU_Distance_Projectile;
     public GameObject ts_PSU_Shock_Attack;
     public GameObject ts_PSU_Attack_Area;
@@ -12,6 +13,7 @@ public class GM : MonoBehaviour {
     public GameObject ts_HD_Disc_Attack;
 
     // Statics References
+    static public GameObject Player;
     static public GameObject GPU_Distance_Projectile;
     static public GameObject PSU_Shock_Attack;
     static public GameObject PSU_Attack_Area;
@@ -27,5 +29,14 @@ public class GM : MonoBehaviour {
         RAM_Binary = ts_RAM_Binary;
         HD_ThrowFiles = ts_HD_ThrowFiles;
         HD_Disc_Attack = ts_HD_Disc_Attack;
+        Player = ts_Player;
+    }
+
+    public void PlayerTakeDamage(float amount){
+        Player.GetComponent<Player_Behaviour>().TakeDamage(amount);
+    }
+
+        public void PlayerReceiveLife(float amount){
+        Player.GetComponent<Player_Behaviour>().ReceiveLife(amount);
     }
 }
