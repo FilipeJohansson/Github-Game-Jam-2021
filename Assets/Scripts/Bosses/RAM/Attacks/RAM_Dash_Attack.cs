@@ -31,8 +31,6 @@ public class RAM_Dash_Attack : IAttack {
 
         // while don't have target or don't touch in the player, walk in target direction
         while (dashing) {
-            ram_Behaviour.isAttacking = true;
-
             owner.transform.position = Vector3.Lerp(owner.transform.position, targetV3, spinSpeed * Time.deltaTime);
 
             // vector2 with enimy postion round
@@ -48,7 +46,7 @@ public class RAM_Dash_Attack : IAttack {
         }
 
         ram_Behaviour.posLocked = false;
-        ram_Behaviour.isAttacking = false;
+        ram_Behaviour.canAttack = false;
 
         yield return null;
     }

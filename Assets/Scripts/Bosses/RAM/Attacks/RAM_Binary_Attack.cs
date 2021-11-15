@@ -11,5 +11,6 @@ public class RAM_Binary_Attack : IAttack {
 
     public void Attack(MonoBehaviour mono) {
         GameObject.Instantiate(GM.RAM_Binary, owner.transform.position, owner.transform.rotation);
+        owner.GetComponent<BossBase>().canAttack = false;
     }
 }
