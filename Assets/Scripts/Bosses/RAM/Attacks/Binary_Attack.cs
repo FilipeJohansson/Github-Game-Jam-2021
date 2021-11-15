@@ -6,7 +6,7 @@ public class Binary_Attack : Attack_Base {
         //Assigns the transform of the first child of the Game Object this script is attached to
         spriteChild = gameObject.transform.GetChild(0);
         spriteRenderer = spriteChild.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = itemsSprite[Random.Range(0, itemsSprite.Length)];
+        // spriteRenderer.sprite = itemsSprite[Random.Range(0, itemsSprite.Length)];
       
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         spriteChild.transform.forward = mainCamera.transform.forward;

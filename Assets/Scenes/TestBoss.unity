@@ -907,11 +907,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc25df651d5be643b11797f4bfb4b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ts_Player: {fileID: 0}
+  ts_Player: {fileID: 1499229977}
   ts_GPU_Distance_Projectile: {fileID: 4460158510407298584, guid: 09581c86e1f1cdd43990bdb1204fabbb, type: 3}
   ts_PSU_Shock_Attack: {fileID: 2035747311968300228, guid: 6172310b9a364ce46a40586200718ccb, type: 3}
   ts_PSU_Attack_Area: {fileID: 0}
-  ts_RAM_Binary: {fileID: 665733719749273131, guid: 5d615a3d23f1148409d621d3c499b911, type: 3}
+  ts_Attack_Binary_0: {fileID: 665733719749273131, guid: e81fd82af2ecd95409d710fe52f95d21, type: 3}
+  ts_Attack_Binary_1: {fileID: 665733719749273131, guid: 7dbc9f99e8faa3543bce8b3097ab9b34, type: 3}
   ts_HD_ThrowFiles: {fileID: 0}
   ts_HD_Disc_Attack: {fileID: 0}
 --- !u!4 &1478995225
