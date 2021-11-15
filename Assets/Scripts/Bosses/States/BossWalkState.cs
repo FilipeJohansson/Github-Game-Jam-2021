@@ -5,12 +5,10 @@ public class BossWalkState : BossBaseState {
     [SerializeField] string animationName = "walking";
 
     public override void EnterState(BossStateManager boss, BossBase bossBase) {
-        Debug.Log("Enter Walk State");
         boss.animator.SetBool(animationName, true);
     }
 
     public override void ExitState(BossStateManager boss, BossBase bossBase) {
-        Debug.Log("Exit Walk State");
         boss.animator.SetBool(animationName, false);
     }
 

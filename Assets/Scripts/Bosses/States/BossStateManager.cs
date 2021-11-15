@@ -10,6 +10,7 @@ public class BossStateManager : MonoBehaviour {
     public BossWalkState WalkState = new BossWalkState();
     public BossAttackState AttackState = new BossAttackState();
     public BossLayState LayState = new BossLayState();
+    public BossDieState DieState = new BossDieState();
 
     public Animator animator;
     public BossBase bossBase;
@@ -21,13 +22,15 @@ public class BossStateManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        currentState = WalkState;
+        currentState = SleepState;
         currentState.EnterState(this, bossBase);
     }
 
     // Update is called once per frame
     void Update() {
         currentState.UpdateState(this, bossBase);
+        if (bossBase.currentHealth <= 0)
+            SwitchState(DieState);
     }
 
     public void SwitchState(BossBaseState state) {

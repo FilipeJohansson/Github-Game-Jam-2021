@@ -5,13 +5,11 @@ public class BossSleepState : BossBaseState {
     [SerializeField] string animationName = "sleeping";
 
     public override void EnterState(BossStateManager boss, BossBase bossBase) {
-        Debug.Log("Enter Sleep State");
         boss.animator.SetBool(animationName, true);
         boss.StartCoroutine(WakeUp(boss));
     }
 
     public override void ExitState(BossStateManager boss, BossBase bossBase) {
-        Debug.Log("Exit Sleep State");
         boss.animator.SetBool(animationName, false);
     }
 

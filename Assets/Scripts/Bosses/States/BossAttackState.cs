@@ -7,14 +7,12 @@ public class BossAttackState : BossBaseState {
     bool alreadyAttacked = false;
 
     public override void EnterState(BossStateManager boss, BossBase bossBase) {
-        Debug.Log("Enter Attack State");
         boss.animator.SetBool(animationName, true);
         bossBase.isAttacking = true;
         alreadyAttacked = false;
     }
 
     public override void ExitState(BossStateManager boss, BossBase bossBase) {
-        Debug.Log("Exit Attack State");
         boss.animator.SetBool(animationName, false);
         bossBase.isAttacking = false;
     }

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public abstract class BossBase : MonoBehaviour {
     [SerializeField] public GameObject slot;
-    [SerializeField] public int health;
+    [SerializeField] public int maxHealth;
+    [SerializeField] public int currentHealth;
+    [SerializeField] public bool isDead = false;
     [SerializeField] public float damage;
     [SerializeField] public float speed;
     [SerializeField] public float attackSpeed;
@@ -27,11 +29,12 @@ public abstract class BossBase : MonoBehaviour {
     public List<IAttack> attacks;
 
     void Start() {
-        Debug.Log("BossBase Start");
         // Find player object
         FindPlayerObject();
         ResetAttackTimer();
         ResetAttackDelay();
+
+        currentHealth = maxHealth;
     }
 
     void FixedUpdate() {
