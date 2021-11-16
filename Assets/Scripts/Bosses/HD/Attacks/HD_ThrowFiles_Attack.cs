@@ -10,6 +10,6 @@ public class HD_ThrowFiles_Attack : IAttack {
     }
 
     public void Attack(MonoBehaviour mono) {
-        GameObject.Instantiate(GM.HD_ThrowFiles, owner.transform.position, owner.transform.rotation);
+        GameObject.Instantiate(GameManager.HD_ThrowFiles, owner.transform.position, owner.transform.rotation);
     }
 }

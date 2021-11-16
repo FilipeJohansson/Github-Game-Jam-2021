@@ -7,6 +7,6 @@ public class GPU_Distance_Attack : IAttack {
     }
 
     public void Attack(MonoBehaviour mono) {
-        GameObject.Instantiate(GM.GPU_Distance_Projectile, owner.transform.position, owner.transform.rotation);
+        GameObject.Instantiate(GameManager.GPU_Distance_Projectile, owner.transform.position, owner.transform.rotation);
     }
 }

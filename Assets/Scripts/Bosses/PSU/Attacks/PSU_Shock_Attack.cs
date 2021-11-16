@@ -19,15 +19,15 @@ public class PSU_Shock_Attack : IAttack {
         psu_Behaviour.posLocked = true;
         psu_Behaviour.isAttacking = true;
 
-        GM.PSU_Attack_Area.SetActive(true);
-        GM.PSU_Attack_Area.GetComponentInChildren<SpriteRenderer>().material.color = new Color(1, 1, 1, .7f);
+        GameManager.PSU_Attack_Area.SetActive(true);
+        GameManager.PSU_Attack_Area.GetComponentInChildren<SpriteRenderer>().material.color = new Color(1, 1, 1, .7f);
 
         yield return new WaitForSeconds(1.5f);
 
-        GM.PSU_Attack_Area.SetActive(false);
+        GameManager.PSU_Attack_Area.SetActive(false);
 
         // Spawn the attack
-        GameObject.Instantiate(GM.PSU_Shock_Attack, owner.transform.position, owner.transform.rotation);
+        GameObject.Instantiate(GameManager.PSU_Shock_Attack, owner.transform.position, owner.transform.rotation);
 
         yield return new WaitForSeconds(.5f);
 

@@ -17,7 +17,7 @@ public class RAM_Binary_Attack : IAttack {
     }
 
     public void Attack(MonoBehaviour mono) {
-        // GameObject.Instantiate(GM.RAM_Binary, owner.transform.position, owner.transform.rotation);
+        // GameObject.Instantiate(GameManager.RAM_Binary, owner.transform.position, owner.transform.rotation);
         word = words[Random.Range(0, words.Length)];
         mono.StartCoroutine(ThrowBinary(owner));
 
@@ -32,9 +32,9 @@ public class RAM_Binary_Attack : IAttack {
         foreach (char c in word) {
             yield return new WaitForSeconds(.2f);
             if (c == '0')
-                GameObject.Instantiate(GM.Attack_Binary_0, owner.transform.position, owner.transform.rotation);
+                GameObject.Instantiate(GameManager.Attack_Binary_0, owner.transform.position, owner.transform.rotation);
             else if (c == '1')
-                GameObject.Instantiate(GM.Attack_Binary_1, owner.transform.position, owner.transform.rotation);
+                GameObject.Instantiate(GameManager.Attack_Binary_1, owner.transform.position, owner.transform.rotation);
             else
                 yield return new WaitForSeconds(.3f);
         }

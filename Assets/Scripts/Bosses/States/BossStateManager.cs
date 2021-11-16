@@ -22,7 +22,7 @@ public class BossStateManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        currentState = IdleState;
+        currentState = SleepState;
         currentState.EnterState(this, bossBase);
     }
 

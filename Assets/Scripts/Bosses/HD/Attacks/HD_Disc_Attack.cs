@@ -10,6 +10,6 @@ public class HD_Disc_Attack : IAttack {
     }
 
     public void Attack(MonoBehaviour mono) {
-        GameObject.Instantiate(GM.HD_Disc_Attack, owner.transform.position, owner.transform.rotation);
+        GameObject.Instantiate(GameManager.HD_Disc_Attack, owner.transform.position, owner.transform.rotation);
     }
 }

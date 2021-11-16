@@ -30,7 +30,7 @@ public class Binary_Attack : Attack_Base {
     void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             collided = true;
-            gm.PlayerTakeDamage(damage);
+            gameManager.PlayerTakeDamage(damage);
         }
     }
 }

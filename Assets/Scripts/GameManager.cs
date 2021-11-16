@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GM : MonoBehaviour {
+public class GameManager : MonoBehaviour {
     // Inspector variables
     public GameObject ts_Player;
     public GameObject ts_GPU_Distance_Projectile;
