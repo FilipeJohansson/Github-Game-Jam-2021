@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RAM_Dash_Attack : IAttack {
+public class RAM_Dash_Attack : Attack_Base, IAttack {
     GameObject owner;
 
-    bool collided = false;
-    [SerializeField] float spinSpeed = 5f;
+    [SerializeField] float spinSpeed = 10f;
 
     public RAM_Dash_Attack(GameObject _owner) {
         owner = _owner;
@@ -52,8 +51,11 @@ public class RAM_Dash_Attack : IAttack {
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player" || other.tag == "Enemy")
+        if (other.tag == "Player" || other.tag == "Enemy") {
             collided = true;
+            if (other.tag == "Player")
+                gameManager.PlayerTakeDamage(damage);
+        }
     }
 }
 

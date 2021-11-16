@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class BossBase : MonoBehaviour {
+    [SerializeField] public GameManager gameManager;
     [SerializeField] public GameObject slot;
     [SerializeField] public int maxHealth;
     [SerializeField] public int currentHealth;

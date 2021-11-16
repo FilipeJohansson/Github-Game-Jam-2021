@@ -75,12 +75,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595e7fbad75bf65428ef7bd54a684461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gm: {fileID: 0}
+  gameManager: {fileID: 0}
   player: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
-  damage: 3
+  damage: 1
   rotationVelocity: 400
-  moveVelocity: 10
+  moveVelocity: 25
   timeToDestroy: 5
   currentTimeToDestroy: 0
   itemsSprite: []
