@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player_Behaviour : MonoBehaviour, IMovement {
+public class PlayerBehaviour : MonoBehaviour, IMovement {
     
     [SerializeField] private float MAX_LIFE = 40;
     [SerializeField] private float _life = 40;

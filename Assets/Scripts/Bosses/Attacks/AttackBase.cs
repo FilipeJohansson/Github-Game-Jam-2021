@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Attack_Base : MonoBehaviour {
+public abstract class AttackBase : MonoBehaviour {
     [Header("Context Attributes")]    
     [SerializeField] protected GameObject owner;
     [SerializeField] protected GameManager gameManager;

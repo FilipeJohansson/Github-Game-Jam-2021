@@ -1,11 +1,13 @@
 using UnityEngine;
 
-public class Throw_Attack : Attack_Base {
+public class Prefab_ThrowAttack : AttackBase {
     // Start is called before the first frame update
     void Awake() {
+        //Assigns the transform of the first child of the Game Object this script is attached to
         spriteChild = gameObject.transform.GetChild(0);
         spriteRenderer = spriteChild.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = itemsSprite[Random.Range(0, itemsSprite.Length)];
+        if (itemsSprite.Length > 0)
+            spriteRenderer.sprite = itemsSprite[Random.Range(0, itemsSprite.Length)];
 
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         spriteChild.transform.forward = mainCamera.transform.forward;
@@ -21,12 +23,15 @@ public class Throw_Attack : Attack_Base {
         transform.Translate(Vector3.forward * Time.deltaTime * moveVelocity);
 
         if (currentTimeToDestroy <= 0 || collided)
-            Destroy(gameObject);
+            Destroy(gameObject); // to don't accumulate binaries in the game
 
         currentTimeToDestroy -= Time.deltaTime;
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player") collided = true;
+        if (other.tag == "Player") {
+            collided = true;
+            gameManager.PlayerTakeDamage(damage);
+        }
     }
 }

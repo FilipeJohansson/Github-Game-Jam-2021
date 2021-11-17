@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RAM_Binary_Attack : IAttack {
-    GameObject owner;
-
+public class ThrowBinaryAttack : AttackBase, IAttack {
     string[] words = new string[]
     {
         "01100110 01110101 01100011 01101011",
@@ -16,19 +14,19 @@ public class RAM_Binary_Attack : IAttack {
     };
     string word;
 
-    public RAM_Binary_Attack(GameObject _owner) {
+    public ThrowBinaryAttack(GameObject _owner) {
         owner = _owner;
     }
 
     public void Attack(MonoBehaviour mono) {
         // GameObject.Instantiate(GameManager.RAM_Binary, owner.transform.position, owner.transform.rotation);
         word = words[Random.Range(0, words.Length)];
-        mono.StartCoroutine(ThrowBinary(owner));
+        mono.StartCoroutine(Throw(owner));
 
         // owner.GetComponent<BossBase>().canAttack = false;
     }
 
-    IEnumerator ThrowBinary(GameObject _owner) {
+    IEnumerator Throw(GameObject _owner) {
         BossBase boss = _owner.GetComponent<BossBase>();
 
         // boss.posLocked = true;

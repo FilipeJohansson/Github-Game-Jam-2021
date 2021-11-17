@@ -806,7 +806,7 @@ GameObject:
   - component: {fileID: 2096577047}
   m_Layer: 0
   m_Name: GM
-  m_TagString: Untagged
+  m_TagString: GM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -823,10 +823,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc25df651d5be643b11797f4bfb4b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ts_Player: {fileID: 0}
   ts_GPU_Distance_Projectile: {fileID: 4460158510407298584, guid: 09581c86e1f1cdd43990bdb1204fabbb, type: 3}
   ts_PSU_Shock_Attack: {fileID: 2035747311968300228, guid: 6172310b9a364ce46a40586200718ccb, type: 3}
   ts_PSU_Attack_Area: {fileID: 1854319228}
-  ts_RAM_Binary: {fileID: 0}
+  ts_Attack_Binary_0: {fileID: 0}
+  ts_Attack_Binary_1: {fileID: 0}
   ts_HD_ThrowFiles: {fileID: 0}
   ts_HD_Disc_Attack: {fileID: 0}
 --- !u!4 &2096577048

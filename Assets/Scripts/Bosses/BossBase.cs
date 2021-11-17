@@ -30,6 +30,8 @@ public abstract class BossBase : MonoBehaviour {
     public List<IAttack> attacks;
 
     void Start() {
+        gameManager = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+
         // Find player object
         FindPlayerObject();
         ResetAttackTimer();
@@ -138,4 +140,9 @@ public abstract class BossBase : MonoBehaviour {
     public void SetAttackAreaScale(float scaleX, float scaleY, float scaleZ) {
         attackArea.transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
     } */
+
+    void OnTriggerEnter(Collider other) {
+        if (other.tag == "Player")
+            gameManager.PlayerTakeDamage(damage);
+    }
 }
