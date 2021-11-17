@@ -2,10 +2,11 @@ Shader "Custom/Binario"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
+        // _MainTex ("Texture", 2D) = "white" {}
+        // _TanFac ("Tangent Factor", float) = 0.1
+
         _NumberColor ("Number Color", Color) = (0, 1, 0, 1)
         _Velocity ("Animation Velocity", float) = 0.1
-        _TanFac ("Tangent Factor", float) = 0.1
 
         [NoScaleOffset] _CubeTex ("Cubemap", Cube) = "grey" {}
     }
@@ -32,40 +33,14 @@ Shader "Custom/Binario"
 
             #include "UnityCG.cginc"
 
-            #define TAU 6.28318530718
-            #define PI 3.14159
+            // sampler2D _MainTex;
+            // float4 _MainTex_ST;
+            // float _TanFac;
 
             uniform samplerCUBE _CubeTex;
             float4 _CubeTex_HDR;
-
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
             float4 _NumberColor;
             float _Velocity;
-            float _TanFac;
-
-            float nrand(float2 uv)
-            {
-                return frac(sin(dot(uv, float2(12.9898, 78.233))) * 43758.5453);
-            }
-
-            float3 RotateAroundZInDegrees(float3 vertex, float degrees)
-            {
-                float alpha = degrees * UNITY_PI / 180.0;
-                float sinA, cosA;
-                sincos(alpha, sinA, cosA);
-                float2x2 m = float2x2(cosA, -sinA, sinA, cosA);
-                return float3(mul(m, vertex.yx), vertex.z).zyx;
-            }
-
-            float3 RotateAroundYInDegrees (float3 vertex, float degrees)
-            {
-                float alpha = degrees * UNITY_PI / 180.0;
-                float sina, cosa;
-                sincos(alpha, sina, cosa);
-                float2x2 m = float2x2(cosa, -sina, sina, cosa);
-                return float3(mul(m, vertex.xz), vertex.y).xzy;
-            }
 
             float3 RotateAroundXInDegrees(float3 vertex, float degrees)
             {
@@ -95,8 +70,10 @@ Shader "Custom/Binario"
             Interpolator vert (MeshData v)
             {
                 Interpolator o;
+                
+                // o.uv = TRANSFORM_TEX(v.uv, _MainTex); // textura 2d
+
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.normal = v.normal;
                 o.texcoord = v.vertex.xyz;
 
