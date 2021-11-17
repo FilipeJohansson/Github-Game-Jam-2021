@@ -609,7 +609,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -0.2
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4894,8 +4894,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47a146f4ce6812499b48b507ce8616c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  gameManager: {fileID: 0}
   player: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
+  damage: 1
+  moveSpeed: 10
   rotationVelocity: 0
   moveVelocity: 0
   timeToDestroy: 5

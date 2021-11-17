@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8496b4ec3a5604cb8e66f804ddc68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   slot: {fileID: 0}
   maxHealth: 0
   currentHealth: 0
@@ -742,7 +743,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427170991}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -857,11 +858,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8496b4ec3a5604cb8e66f804ddc68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   slot: {fileID: 748505150}
   maxHealth: 10
   currentHealth: 0
   isDead: 0
-  damage: 0
+  damage: 10
   speed: 5
   attackSpeed: 0
   attackRange: 0
@@ -908,7 +910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ts_Player: {fileID: 1499229977}
-  ts_GPU_Distance_Projectile: {fileID: 4460158510407298584, guid: 09581c86e1f1cdd43990bdb1204fabbb, type: 3}
+  ts_GPU_ThrowAttack: {fileID: 0}
   ts_PSU_Shock_Attack: {fileID: 2035747311968300228, guid: 6172310b9a364ce46a40586200718ccb, type: 3}
   ts_PSU_Attack_Area: {fileID: 0}
   ts_Attack_Binary_0: {fileID: 665733719749273131, guid: e81fd82af2ecd95409d710fe52f95d21, type: 3}

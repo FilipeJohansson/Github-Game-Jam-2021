@@ -2,22 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PSU_Shock_Attack : IAttack {
-    GameObject owner;
+public class ShockAttack : AttackBase, IAttack {
 
-    public PSU_Shock_Attack(GameObject _owner) {
+    public ShockAttack(GameObject _owner) {
         owner = _owner;
     }
 
     public void Attack(MonoBehaviour mono) {
-        mono.StartCoroutine(ShockAttack(owner));
+        mono.StartCoroutine(Shock(owner));
     }
 
-    IEnumerator ShockAttack(GameObject _owner) {
-        PSU_Behaviour psu_Behaviour = _owner.GetComponent<PSU_Behaviour>();
+    IEnumerator Shock(GameObject _owner) {
+        BossBase boss = _owner.GetComponent<BossBase>();
 
-        psu_Behaviour.posLocked = true;
-        psu_Behaviour.isAttacking = true;
+        boss.posLocked = true;
 
         GameManager.PSU_Attack_Area.SetActive(true);
         GameManager.PSU_Attack_Area.GetComponentInChildren<SpriteRenderer>().material.color = new Color(1, 1, 1, .7f);
@@ -31,8 +29,8 @@ public class PSU_Shock_Attack : IAttack {
 
         yield return new WaitForSeconds(.5f);
 
-        psu_Behaviour.posLocked = false;
-        psu_Behaviour.isAttacking = false;
+        boss.posLocked = false;
+        boss.canAttack = false;
 
         yield return null;
     }

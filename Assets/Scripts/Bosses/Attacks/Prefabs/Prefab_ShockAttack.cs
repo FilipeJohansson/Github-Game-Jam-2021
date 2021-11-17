@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Shock_Attack : Attack_Base {
+public class Prefab_ShockAttack : Attack_Base {
     // Start is called before the first frame update
     void Awake() {
         colliderObject = gameObject.transform.GetChild(0);
@@ -20,10 +20,10 @@ public class Shock_Attack : Attack_Base {
             currentTimeToDestroy -= Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Player") {
-            Debug.Log("Player hit");
-            //other.gameObject.GetComponent<PlayerController>().TakeDamage(1);
+    void OnTriggerEnter(Collider other) {
+        if (other.tag == "Player") {
+            collided = true;
+            gameManager.PlayerTakeDamage(damage);
         }
     }
 }
