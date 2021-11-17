@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5082851436988423512}
   - component: {fileID: 874697018095408696}
   - component: {fileID: 4339487057524567183}
-  - component: {fileID: 1824079834064018611}
+  - component: {fileID: 8682189473082505523}
   m_Layer: 0
   m_Name: HD_ThrowFiles_Attack
   m_TagString: Untagged
@@ -63,7 +63,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0.016590983, y: -0.018685311, z: 0}
---- !u!114 &1824079834064018611
+--- !u!114 &8682189473082505523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,14 +72,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1484695756215325680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8aef4be130fd4042924c7bc33761e04, type: 3}
+  m_Script: {fileID: 11500000, guid: fee706e025e30ac42b098fd918631df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  gameManager: {fileID: 0}
   player: {fileID: 0}
-  target: {x: 0, y: 0, z: 0}
+  damage: 1
+  moveSpeed: 10
   rotationVelocity: 400
   moveVelocity: 10
-  timeToDestroy: 20
+  timeToDestroy: 50
   currentTimeToDestroy: 0
   itemsSprite:
   - {fileID: 21300000, guid: f9e7c150f8e126540aa2fb23d86c6389, type: 3}
@@ -89,6 +92,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   colliderObject: {fileID: 0}
   collided: 0
+  collidedPlayer: 0
   ps: {fileID: 0}
 --- !u!1 &2658984227885109383
 GameObject:

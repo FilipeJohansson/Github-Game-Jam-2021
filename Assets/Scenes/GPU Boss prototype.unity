@@ -666,7 +666,7 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   isDead: 0
-  damage: 1
+  damage: 10
   speed: 5
   attackSpeed: 0
   attackRange: 0
@@ -767,7 +767,7 @@ MonoBehaviour:
   ts_PSU_Attack_Area: {fileID: 0}
   ts_Attack_Binary_0: {fileID: 0}
   ts_Attack_Binary_1: {fileID: 0}
-  ts_HD_ThrowFiles: {fileID: 0}
+  ts_HD_ThrowFiles: {fileID: 1484695756215325680, guid: 418eaa1a870bd374198a1db13089be20, type: 3}
   ts_HD_Disc_Attack: {fileID: 0}
 --- !u!4 &1902621044
 Transform:

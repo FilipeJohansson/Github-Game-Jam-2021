@@ -16,7 +16,7 @@ public class HD_Dash_Attack : IAttack {
     }
 
     IEnumerator SpinIntoPlayer(GameObject _owner) {
-        HD_Behaviour hd_behaviour = _owner.GetComponent<HD_Behaviour>();
+        HDBehaviour hd_behaviour = _owner.GetComponent<HDBehaviour>();
 
         // delay antes do dash
         yield return new WaitForSeconds(0.5f);

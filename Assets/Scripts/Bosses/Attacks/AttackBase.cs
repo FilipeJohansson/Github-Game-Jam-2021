@@ -7,7 +7,6 @@ public abstract class AttackBase : MonoBehaviour {
     [SerializeField] protected GameObject owner;
     [SerializeField] protected GameManager gameManager;
     [SerializeField] protected GameObject player;
-    [SerializeField] protected Vector3 target;
     protected GameObject mainCamera;
 
     [Header("Damage Attributes")]

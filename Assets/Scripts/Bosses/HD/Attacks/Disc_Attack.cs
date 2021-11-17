@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Disc_Attack : Attack_Base {
+public class Disc_Attack : AttackBase {
     [Header("Disc Attack")]
     [SerializeField] float travelBackVelocity;
     bool returning = false;
 
     GameObject hd;
-    HD_Behaviour hd_Behaviour;
+    HDBehaviour hd_Behaviour;
 
     // Start is called before the first frame update
    void Awake() {
         player = GameObject.FindGameObjectWithTag("Player");
         hd = GameObject.FindGameObjectWithTag("Boss");
-        hd_Behaviour = hd.GetComponent<HD_Behaviour>();
+        hd_Behaviour = hd.GetComponent<HDBehaviour>();
 
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 		transform.forward = mainCamera.transform.forward;

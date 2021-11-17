@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Prefab_ShockAttack : Attack_Base {
+public class Prefab_ShockAttack : AttackBase {
     // Start is called before the first frame update
     void Awake() {
         colliderObject = gameObject.transform.GetChild(0);
