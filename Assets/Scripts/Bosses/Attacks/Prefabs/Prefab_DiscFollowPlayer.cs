@@ -1,26 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Disc_Attack : AttackBase {
-    [Header("Disc Attack")]
+public class Prefab_DiscFollowPlayer : AttackBase {
     [SerializeField] float travelBackVelocity;
     bool returning = false;
 
-    GameObject hd;
-    HDBehaviour hd_Behaviour;
+    HDBehaviour boss;
 
     // Start is called before the first frame update
    void Awake() {
         player = GameObject.FindGameObjectWithTag("Player");
-        hd = GameObject.FindGameObjectWithTag("Boss");
-        hd_Behaviour = hd.GetComponent<HDBehaviour>();
+
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Boss");
+        foreach (GameObject obj in objs)
+            if (obj.GetComponent<HDBehaviour>() != null)
+                boss = obj.GetComponent<HDBehaviour>();
 
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 		transform.forward = mainCamera.transform.forward;
 
-        hd_Behaviour.posLocked = true;
-        hd_Behaviour.isAttacking = true;
+        boss.posLocked = true;
+        boss.isAttacking = true;
 
         currentTimeToDestroy = timeToDestroy;
     }
@@ -31,10 +30,10 @@ public class Disc_Attack : AttackBase {
         returning = currentTimeToDestroy <= 0 || collidedPlayer ? true : false;
 
         if (returning) {
-            transform.position = Vector3.Lerp(transform.position, hd.transform.position, travelBackVelocity * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, boss.transform.position, travelBackVelocity * Time.deltaTime);
             if (collided) {
-                hd_Behaviour.posLocked = false;
-                hd_Behaviour.isAttacking = false;
+                boss.posLocked = false;
+                boss.isAttacking = false;
                 Destroy(gameObject);
             }
         } else {
@@ -45,8 +44,10 @@ public class Disc_Attack : AttackBase {
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player")
+        if (other.tag == "Player") {
             collidedPlayer = true;
+            gameManager.PlayerTakeDamage(damage);
+        }
 
         if (other.tag == "Boss")
             collided = true;

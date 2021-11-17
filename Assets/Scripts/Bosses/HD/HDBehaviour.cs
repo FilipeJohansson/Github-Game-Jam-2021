@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HDBehaviour : BossBase {
+    float dashSpeed = 7f;
+
     void Awake() {
         attacks = new List<IAttack> {
-            // new HD_Dash_Attack(gameObject),
-            // new HD_Disc_Attack(gameObject),
+            new DashAttack(gameObject, dashSpeed, false, true),
+            new DiscAttack(gameObject),
             new ThrowFiles(gameObject)
         };
     }

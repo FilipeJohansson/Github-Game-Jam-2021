@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour {
     public GameObject ts_GPU_ThrowAttack;
     
     [Header("PSU")]
-    public GameObject ts_PSU_Shock_Attack;
-    public GameObject ts_PSU_Attack_Area;
+    public GameObject ts_PSU_ShockAttack;
+    public GameObject ts_PSU_AttackArea;
 
     [Header("RAM")]
     public GameObject ts_Attack_Binary_0;
@@ -20,27 +20,27 @@ public class GameManager : MonoBehaviour {
 
     [Header("HD")]
     public GameObject ts_HD_ThrowFiles;
-    public GameObject ts_HD_Disc_Attack;
+    public GameObject ts_HD_DiscAttack;
 
     // Statics References
     static public GameObject Player;
     static public GameObject GPU_ThrowAttack;
-    static public GameObject PSU_Shock_Attack;
-    static public GameObject PSU_Attack_Area;
+    static public GameObject PSU_ShockAttack;
+    static public GameObject PSU_AttackArea;
     static public GameObject Attack_Binary_0;
     static public GameObject Attack_Binary_1;
     static public GameObject HD_ThrowFiles;
-    static public GameObject HD_Disc_Attack;
+    static public GameObject HD_DiscAttack;
 
     void Start() {
         // Set static references
         GPU_ThrowAttack = ts_GPU_ThrowAttack;
-        PSU_Shock_Attack = ts_PSU_Shock_Attack;
-        PSU_Attack_Area = ts_PSU_Attack_Area;
+        PSU_ShockAttack = ts_PSU_ShockAttack;
+        PSU_AttackArea = ts_PSU_AttackArea;
         Attack_Binary_0 = ts_Attack_Binary_0;
         Attack_Binary_1 = ts_Attack_Binary_1;
         HD_ThrowFiles = ts_HD_ThrowFiles;
-        HD_Disc_Attack = ts_HD_Disc_Attack;
+        HD_DiscAttack = ts_HD_DiscAttack;
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 

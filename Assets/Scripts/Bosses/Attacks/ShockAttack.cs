@@ -17,15 +17,15 @@ public class ShockAttack : AttackBase, IAttack {
 
         boss.posLocked = true;
 
-        GameManager.PSU_Attack_Area.SetActive(true);
-        GameManager.PSU_Attack_Area.GetComponentInChildren<SpriteRenderer>().material.color = new Color(1, 1, 1, .7f);
+        GameManager.PSU_AttackArea.SetActive(true);
+        GameManager.PSU_AttackArea.GetComponentInChildren<SpriteRenderer>().material.color = new Color(1, 1, 1, .7f);
 
         yield return new WaitForSeconds(1.5f);
 
-        GameManager.PSU_Attack_Area.SetActive(false);
+        GameManager.PSU_AttackArea.SetActive(false);
 
         // Spawn the attack
-        GameObject.Instantiate(GameManager.PSU_Shock_Attack, owner.transform.position, owner.transform.rotation);
+        GameObject.Instantiate(GameManager.PSU_ShockAttack, owner.transform.position, owner.transform.rotation);
 
         yield return new WaitForSeconds(.5f);
 

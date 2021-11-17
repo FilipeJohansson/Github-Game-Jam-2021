@@ -4,12 +4,14 @@ using UnityEngine;
 public class DashAttack : AttackBase, IAttack {
 
     bool back;
+    bool rotate;
     Vector3 initialPos;
 
-    public DashAttack(GameObject _owner, float _moveSpeed, bool _back = false) {
+    public DashAttack(GameObject _owner, float _moveSpeed, bool _back = false, bool _rotate = false) {
         owner = _owner;
         moveSpeed = _moveSpeed;
         back = _back;
+        rotate = _rotate;
     }
 
     public void Attack(MonoBehaviour mono) {
@@ -21,9 +23,7 @@ public class DashAttack : AttackBase, IAttack {
 
         yield return new WaitForSeconds(0.5f);
 
-        if (back) {
-            initialPos = owner.transform.position;
-        }
+        if (back) initialPos = owner.transform.position;
 
         bool dashing = true;
         boss.posLocked = true; // Lock the enimy's LookAt
@@ -36,6 +36,7 @@ public class DashAttack : AttackBase, IAttack {
         // while don't have target or don't touch in the player, walk in target direction
         while (dashing) {
             owner.transform.position = Vector3.Lerp(owner.transform.position, targetV3, moveSpeed * Time.deltaTime);
+            if (rotate) owner.transform.Rotate(new Vector3(0, 10, 0));
 
             // vector2 with enimy postion round
             Vector2 currentPos = new Vector2(Mathf.Round(owner.transform.position.x), Mathf.Round(owner.transform.position.z));

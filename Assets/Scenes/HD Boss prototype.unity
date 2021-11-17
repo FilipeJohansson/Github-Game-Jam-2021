@@ -153,13 +153,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ts_Player: {fileID: 2082736970}
-  ts_GPU_ThrowAttack: {fileID: 0}
-  ts_PSU_Shock_Attack: {fileID: 0}
-  ts_PSU_Attack_Area: {fileID: 0}
-  ts_Attack_Binary_0: {fileID: 0}
-  ts_Attack_Binary_1: {fileID: 0}
+  ts_GPU_ThrowAttack: {fileID: 4460158510407298584, guid: 09581c86e1f1cdd43990bdb1204fabbb, type: 3}
+  ts_PSU_ShockAttack: {fileID: 2035747311968300228, guid: 6172310b9a364ce46a40586200718ccb, type: 3}
+  ts_PSU_AttackArea: {fileID: 0}
+  ts_Attack_Binary_0: {fileID: 665733719749273131, guid: e81fd82af2ecd95409d710fe52f95d21, type: 3}
+  ts_Attack_Binary_1: {fileID: 665733719749273131, guid: 7dbc9f99e8faa3543bce8b3097ab9b34, type: 3}
   ts_HD_ThrowFiles: {fileID: 1484695756215325680, guid: 418eaa1a870bd374198a1db13089be20, type: 3}
-  ts_HD_Disc_Attack: {fileID: 5852110038477009606, guid: a8d20e8a7a2f0e943b38ac5710746a6c, type: 3}
+  ts_HD_DiscAttack: {fileID: 5852110038477009606, guid: a8d20e8a7a2f0e943b38ac5710746a6c, type: 3}
 --- !u!4 &766939539
 Transform:
   m_ObjectHideFlags: 0
@@ -251,7 +251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995672082}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 15, z: -18}
+  m_LocalPosition: {x: 0, y: 21.73, z: -24.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
