@@ -48,7 +48,17 @@ public class GameManager : MonoBehaviour {
         Player.GetComponent<PlayerBehaviour>().TakeDamage(amount);
     }
 
-        public void PlayerReceiveLife(float amount){
+    public void PlayerReceiveLife(float amount){
         Player.GetComponent<PlayerBehaviour>().ReceiveLife(amount);
+    }
+
+    public void RoomEntered(GameObject room)
+    {
+        Debug.Log(room.name);
+    }
+
+    public void RoomExited(GameObject room)
+    {
+        Debug.Log(room.name);
     }
 }
