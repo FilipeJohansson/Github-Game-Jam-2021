@@ -36,6 +36,6 @@ public class BossStateManager : MonoBehaviour {
     public void SwitchState(BossBaseState state) {
         currentState.ExitState(this, bossBase);
         currentState = state;
-        state.EnterState(this,bossBase);
+        state.EnterState(this, bossBase);
     }
 }

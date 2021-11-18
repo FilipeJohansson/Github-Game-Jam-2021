@@ -9,7 +9,7 @@ public class RoomTrigger : MonoBehaviour
     private UnityAction<GameObject> m_roomEntered;
 
     private RoomExited roomExited;
-    private UnityAction<GameObject> m_roomExited;
+    private UnityAction m_roomExited;
 
     private void Start() 
     {
@@ -27,11 +27,13 @@ public class RoomTrigger : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        roomEntered.Invoke(this.gameObject);
+        if (other.gameObject.tag == "Player")
+            roomEntered.Invoke(this.gameObject);
     }
 
     private void OnTriggerExit(Collider other) {
-        roomExited.Invoke(this.gameObject);
+        if (other.gameObject.tag == "Player")
+            roomExited.Invoke();
     }
 
 }

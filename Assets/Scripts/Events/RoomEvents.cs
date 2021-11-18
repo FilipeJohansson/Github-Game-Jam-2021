@@ -5,6 +5,6 @@ public class RoomEntered : UnityEvent<GameObject>
 {
 }
 
-public class RoomExited : UnityEvent<GameObject>
+public class RoomExited : UnityEvent
 {
 }

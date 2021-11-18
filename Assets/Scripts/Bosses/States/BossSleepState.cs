@@ -6,7 +6,7 @@ public class BossSleepState : BossBaseState {
 
     public override void EnterState(BossStateManager boss, BossBase bossBase) {
         boss.animator.SetBool(animationName, true);
-        boss.StartCoroutine(WakeUp(boss));
+        // boss.StartCoroutine(WakeUp(boss));
     }
 
     public override void ExitState(BossStateManager boss, BossBase bossBase) {
@@ -17,11 +17,11 @@ public class BossSleepState : BossBaseState {
         
     }
 
-    IEnumerator WakeUp(BossStateManager boss) {
-        yield return new WaitForSeconds(2f);
+    // IEnumerator WakeUp(BossStateManager boss) {
+    //     yield return new WaitForSeconds(2f);
 
-        boss.SwitchState(boss.WakeUpState);
+    //     boss.SwitchState(boss.WakeUpState);
 
-        yield return null;
-    }
+    //     yield return null;
+    // }
 }

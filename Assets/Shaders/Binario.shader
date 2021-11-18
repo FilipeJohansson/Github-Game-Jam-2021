@@ -7,21 +7,17 @@ Shader "Custom/Binario"
 
         _NumberColor ("Number Color", Color) = (0, 1, 0, 1)
         _Velocity ("Animation Velocity", float) = 0.1
-
         [NoScaleOffset] _CubeTex ("Cubemap", Cube) = "grey" {}
     }
     SubShader
     {
         Tags {  "RenderType"="Background"  // tag to inform the render pipeline of what type this is
                 "Queue" = "Background"      // changes the render order
-                "PreviewType" = "Plane" }  
-
-        // Tags { "QUEUE"="Background" "RenderType"="Background" "PreviewType"="Skybox" }
+                "PreviewType" = "Skybox" }  
 
         Pass
         {
             Tags { "QUEUE"="Background" "RenderType"="Background" "PreviewType"="Skybox" }
-            // Tags { "QUEUE"="Background" "RenderType"="Background" "PreviewType"="Skybox" }
 
             Cull Off
             ZWrite Off
@@ -82,8 +78,6 @@ Shader "Custom/Binario"
 
             float4 frag (Interpolator i) : SV_Target
             {
-                float velocity = _Time.y * _Velocity;
-                
                 // caso decida fazer com só um plano grandao pra caralho inves de usar skybox com cubemap etc
                 // float3 uvOffseted = float3(i.texcoord.x, sin(i.texcoord.y + velocity), sin(i.texcoord.z + velocity));
                 // float4 col = tex2D(_MainTex, uvOffseted);

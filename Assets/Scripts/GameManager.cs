@@ -8,17 +8,21 @@ public class GameManager : MonoBehaviour {
     public GameObject ts_Player;
 
     [Header("GPU")]
+    public GameObject ts_GPU_Boss;
     public GameObject ts_GPU_ThrowAttack;
     
     [Header("PSU")]
+    public GameObject ts_PSU_Boss;
     public GameObject ts_PSU_ShockAttack;
     public GameObject ts_PSU_AttackArea;
 
     [Header("RAM")]
+    public GameObject ts_RAM_Boss;
     public GameObject ts_Attack_Binary_0;
     public GameObject ts_Attack_Binary_1;
 
     [Header("HD")]
+    public GameObject ts_HD_Boss;
     public GameObject ts_HD_ThrowFiles;
     public GameObject ts_HD_DiscAttack;
 
@@ -31,6 +35,13 @@ public class GameManager : MonoBehaviour {
     static public GameObject Attack_Binary_1;
     static public GameObject HD_ThrowFiles;
     static public GameObject HD_DiscAttack;
+    static public GameObject GPU_Boss;
+    static public GameObject PSU_Boss;
+    static public GameObject RAM_Boss;
+    static public GameObject HD_Boss;
+
+    private string currentRoom;
+    private BossStateManager currentStateManager = null;
 
     void Start() {
         // Set static references
@@ -41,6 +52,10 @@ public class GameManager : MonoBehaviour {
         Attack_Binary_1 = ts_Attack_Binary_1;
         HD_ThrowFiles = ts_HD_ThrowFiles;
         HD_DiscAttack = ts_HD_DiscAttack;
+        GPU_Boss = ts_GPU_Boss;
+        PSU_Boss = ts_PSU_Boss;
+        RAM_Boss = ts_RAM_Boss;
+        HD_Boss = ts_HD_Boss;
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -54,11 +69,33 @@ public class GameManager : MonoBehaviour {
 
     public void RoomEntered(GameObject room)
     {
-        Debug.Log(room.name);
+        currentRoom = room.name;
+
+        switch(currentRoom)
+        {
+            case "CPU":
+                break;
+            case "GPU":
+                currentStateManager = GPU_Boss.GetComponent<BossStateManager>();
+                break;
+            case "PSU":
+                currentStateManager = PSU_Boss.GetComponent<BossStateManager>();
+                break;
+            case "RAM":
+                currentStateManager = RAM_Boss.GetComponent<BossStateManager>();
+                break;
+            case "HD":
+                currentStateManager = HD_Boss.GetComponent<BossStateManager>();
+                break;
+        }
+
+        currentStateManager?.SwitchState(currentStateManager.WakeUpState);
     }
 
-    public void RoomExited(GameObject room)
+    public void RoomExited()
     {
-        Debug.Log(room.name);
+        currentStateManager?.SwitchState(currentStateManager.LayState);
+        currentStateManager = null;
+        currentRoom = null;
     }
 }
