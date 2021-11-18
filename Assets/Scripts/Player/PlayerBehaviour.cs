@@ -1,35 +1,42 @@
 using UnityEngine;
 
-public class PlayerBehaviour : MonoBehaviour, IMovement {
-    
-    [SerializeField] private float MAX_LIFE = 40;
-    [SerializeField] private float _life = 40;
+public class PlayerBehaviour : MonoBehaviour {
 
-    public void Move(GameObject entity) {
-        entity.transform.Translate(Time.deltaTime * 10, 0f, 0f);
+    [SerializeField] private float MAX_LIFE = 40;
+    [SerializeField] private float life = 40;
+    [SerializeField] private float moveSpeed = 5;
+
+    private float horizontalInput;
+    private float verticalInput;
+
+    void FixedUpdate() {
+        Move();
+    }
+
+    private void Move() {
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+
+        transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime);
     }
 
     // when player touch in enemy attack it take damage
     // after call to gamecontroller kill the player
-    public void TakeDamage(float damage)
-    {
-        if (_life > 0)
-        {
+    public void TakeDamage(float damage) {
+        if (life > 0) {
             // just lost life points
-            _life -= damage;
-            Debug.Log("Life points: " + _life);
+            life -= damage;
+            Debug.Log("Life points: " + life);
             // add a call to game controller show in the IU
-        } else
-        {
+        } else {
             //dead
         }
     }
 
-    public void ReceiveLife(float lifePoints)
-    {
-        float aux = _life + lifePoints;
-        
-        if(aux > MAX_LIFE) _life = MAX_LIFE;
-        else _life = aux;
+    public void ReceiveLife(float lifePoints) {
+        float aux = life + lifePoints;
+
+        if (aux > MAX_LIFE) life = MAX_LIFE;
+        else life = aux;
     }
 }

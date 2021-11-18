@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
     // Inspector variables
     [Header("Player")]
     public GameObject ts_Player;
+    public GameObject ts_PlayerBullet;
 
     [Header("GPU")]
     public GameObject ts_GPU_ThrowAttack;
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour {
 
     // Statics References
     static public GameObject Player;
+    static public GameObject PlayerBullet;
     static public GameObject GPU_ThrowAttack;
     static public GameObject PSU_ShockAttack;
     static public GameObject PSU_AttackArea;
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour {
         HD_ThrowFiles = ts_HD_ThrowFiles;
         HD_DiscAttack = ts_HD_DiscAttack;
         Player = GameObject.FindGameObjectWithTag("Player");
+        PlayerBullet = ts_PlayerBullet;
     }
 
     public void PlayerTakeDamage(float amount){
