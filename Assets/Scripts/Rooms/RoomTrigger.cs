@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RoomTrigger : MonoBehaviour
-{
+public class RoomTrigger : MonoBehaviour {
     private RoomEntered roomEntered;
     private UnityAction<GameObject> m_roomEntered;
 
     private RoomExited roomExited;
     private UnityAction m_roomExited;
 
-    private void Start() 
-    {
+    private void Start() {
         if (roomEntered == null)
             roomEntered = new RoomEntered();
 

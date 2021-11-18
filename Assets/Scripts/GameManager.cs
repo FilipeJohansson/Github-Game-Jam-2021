@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
     [Header("GPU")]
     public GameObject ts_GPU_Boss;
     public GameObject ts_GPU_ThrowAttack;
-    
+
     [Header("PSU")]
     public GameObject ts_PSU_Boss;
     public GameObject ts_PSU_ShockAttack;
@@ -59,20 +59,18 @@ public class GameManager : MonoBehaviour {
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    public void PlayerTakeDamage(float amount){
+    public void PlayerTakeDamage(float amount) {
         Player.GetComponent<PlayerBehaviour>().TakeDamage(amount);
     }
 
-    public void PlayerReceiveLife(float amount){
+    public void PlayerReceiveLife(float amount) {
         Player.GetComponent<PlayerBehaviour>().ReceiveLife(amount);
     }
 
-    public void RoomEntered(GameObject room)
-    {
+    public void RoomEntered(GameObject room) {
         currentRoom = room.name;
 
-        switch(currentRoom)
-        {
+        switch (currentRoom) {
             case "CPU":
                 break;
             case "GPU":
@@ -92,8 +90,7 @@ public class GameManager : MonoBehaviour {
         currentStateManager?.SwitchState(currentStateManager.WakeUpState);
     }
 
-    public void RoomExited()
-    {
+    public void RoomExited() {
         currentStateManager?.SwitchState(currentStateManager.LayState);
         currentStateManager = null;
         currentRoom = null;
