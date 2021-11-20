@@ -31,9 +31,9 @@ public class Bullet : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player") {
+        if (other.tag == "Boss") {
             collided = true;
-            gameManager.PlayerTakeDamage(damage);
+            gameManager.BossTakeDamage(other.gameObject, damage);
         }
     }
 }

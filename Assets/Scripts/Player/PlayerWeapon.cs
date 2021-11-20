@@ -50,7 +50,7 @@ public class PlayerWeapon : MonoBehaviour {
 
     private void Shoot() {
         GameObject bullet = Instantiate(GameManager.PlayerBullet, sprite.position, transform.rotation) as GameObject;
-        bullet.GetComponent<Bullet>().SetDamage(10);
+        // bullet.GetComponent<Bullet>().SetDamage(10);
     }
 
     public void ResetAttackTimer() {

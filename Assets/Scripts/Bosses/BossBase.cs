@@ -115,6 +115,14 @@ public abstract class BossBase : MonoBehaviour {
         SetAttackAreaScale();
     }
 
+    public void TakeDamage(float amount) {
+        currentHealth -= (int)amount;
+        if (currentHealth <= 0) {
+            isDead = true;
+            // gameManager.BossDied(this);
+        }
+    }
+
     /* public void SetAttackArea(Vector3 position, Quaternion rotation, Vector3 scale) {
         SetAttackAreaPosition();
         SetAttackAreaRotation();

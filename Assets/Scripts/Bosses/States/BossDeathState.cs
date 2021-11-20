@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BossDieState : BossBaseState {
+public class BossDeathState : BossBaseState {
     [SerializeField] string animationName = "die";
 
     public override void EnterState(BossStateManager boss, BossBase bossBase) {
