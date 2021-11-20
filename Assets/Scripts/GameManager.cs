@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
     // Inspector variables
     [Header("Player")]
     public GameObject ts_Player;
+    public GameObject ts_PlayerBullet;
 
     [Header("GPU")]
     public GameObject ts_GPU_Boss;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour {
 
     // Statics References
     static public GameObject Player;
+    static public GameObject PlayerBullet;
     static public GameObject GPU_ThrowAttack;
     static public GameObject PSU_ShockAttack;
     static public GameObject PSU_AttackArea;
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour {
         RAM_Boss = ts_RAM_Boss;
         HD_Boss = ts_HD_Boss;
         Player = GameObject.FindGameObjectWithTag("Player");
+        PlayerBullet = ts_PlayerBullet;
     }
 
     public void PlayerTakeDamage(float amount) {
@@ -94,5 +97,9 @@ public class GameManager : MonoBehaviour {
         currentStateManager?.SwitchState(currentStateManager.LayState);
         currentStateManager = null;
         currentRoom = null;
+    }
+    
+    public void BossTakeDamage(GameObject boss, float amount){
+        boss.GetComponent<BossBase>().TakeDamage(amount);
     }
 }
