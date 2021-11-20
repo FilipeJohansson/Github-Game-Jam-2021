@@ -16,7 +16,7 @@ public class BossStateManager : MonoBehaviour {
     public BossBase bossBase;
 
     void Awake() {
-        animator = gameObject.GetComponent<Animator>();
+        animator = gameObject.transform.Find("Sprite").GetComponent<Animator>();
         bossBase = gameObject.GetComponent<BossBase>();
     }
 
